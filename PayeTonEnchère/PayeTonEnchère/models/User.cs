@@ -6,6 +6,8 @@ namespace PayeTonEnchère.models
 {
     internal class User
     {
+        #region Attribut
+
         private int _id; //variable de l'identifiant unique du user
         private string _name; //vvaraible de nomination du user
         private string _firstname; //variable du prenom du user
@@ -17,6 +19,9 @@ namespace PayeTonEnchère.models
         private int _phone; // numéro de telephone du user
         private string _pseudo; // psuedo utilisé lors des enchère par le user
 
+        #endregion
+
+        #region Constructeur
         /// <summary>
         /// Constructeur de la classe User
         /// </summary>
@@ -44,6 +49,10 @@ namespace PayeTonEnchère.models
             _pseudo = pseudo; // associe le paramètre à la variable associé dans la base
         }
 
+        #endregion
+
+        #region Getters/Setters 
+
         public int Id { get => _id; set => _id = value; } // accesseur/mutateur de la variable _id
         public string Name { get => _name; set => _name = value; } // accesseur/mutateur de la variable _name
         public string Firstname { get => _firstname; set => _firstname = value; } // accesseur/mutateur de la variable _firstname
@@ -54,5 +63,13 @@ namespace PayeTonEnchère.models
         public string Password { get => _password; set => _password = value; } // accesseur/mutateur de la variable password
         public int Phone { get => _phone; set => _phone = value; } // accesseur/mutateur de la variable _phone
         public string Pseudo { get => _pseudo; set => _pseudo = value; } // accesseur/mutateur de la variable _pseudo
+
+        #endregion
+
+        #region Methodes
+
+        #endregion
+
     }
+
 }
