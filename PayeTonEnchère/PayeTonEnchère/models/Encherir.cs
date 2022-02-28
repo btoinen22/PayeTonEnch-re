@@ -21,5 +21,5 @@ namespace PayeTonEnchère.models
 		#region Methodes
 		#endregion
 
-	}
+    }
 }
