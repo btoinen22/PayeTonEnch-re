@@ -13,6 +13,8 @@ namespace PayeTonEnchère.models
         private double _reserveprice; // prix de réserve sur l'enchère
         private double _finalprice; // prix final atteint par l'enchère
 
+        public static List<Enchere> _collClass = new List<Enchere>();
+
         #endregion
 
         #region Constructeur
