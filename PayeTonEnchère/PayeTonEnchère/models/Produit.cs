@@ -10,8 +10,8 @@ namespace PayeTonEnchère.models
         private int _id; // variable _id est l'dentifiant unique d'un produit
 
         private string _name; // dénomination du produit
-
-        private List<Enchere> _listEnchere;
+        
+       
         /// <summary>
         /// faire attention au type d'utilisation potentiellement a modifié 
         /// pour la prise en charge dans le code c# et dans la bdd
@@ -22,6 +22,13 @@ namespace PayeTonEnchère.models
 
         public static List<Produit> _collClass = new List<Produit>(); // liste de tout les produit enregistré ( pas necessairement utile )
 
+         //Relation
+
+        // relation les encheres du produit
+        private List<Enchere> _lesEncheres;
+
+        // relation les magasins du produit
+        private List<Magasin> _lesMagasins;
         
         #endregion
 
@@ -39,6 +46,8 @@ namespace PayeTonEnchère.models
             _realprice = realprice; // associe le paramètre à la variable associé dans la base
 
             _lesMagasins = new List<Magasin>(); // permet d'associer des magasins à un produits
+
+            _lesEncheres = new List<Enchere>(); //permet d'associer les encheres a un produit
 
             _collClass.Add(this); // ajoute l'instance créer automatiquement dans la liste _collClass
         }

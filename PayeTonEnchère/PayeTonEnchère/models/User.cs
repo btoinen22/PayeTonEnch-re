@@ -19,19 +19,14 @@ namespace PayeTonEnchère.models
         private int _phone; // numéro de telephone du user
         private string _pseudo; // psuedo utilisé lors des enchère par le user
 
+        //Relation 
+        //un utilisateur les encherires
+         private List<Encherir> _lesEncherirs;
+
         #endregion
 
         #region Constructeur
-        /// <summary>
-        /// Constructeur simplifié
-        /// </summary>
-        /// <param name="email"></param>
-        /// <param name="password"></param>
-        public User(string email, string password)
-        {
-            Email = email;
-            Password = password;
-        }
+        
 
         /// <summary>
         /// Constructeur de la classe User
@@ -46,7 +41,7 @@ namespace PayeTonEnchère.models
         /// <param name="password"></param>
         /// <param name="phone"></param>
         /// <param name="pseudo"></param>
-        public User(string name, string firstname, string address, int codepostale, string city, string email, string password, int phone, string pseudo)
+        public User(string name, string firstname, string address, int codepostale, string city, string email, string password, int phone, string pseudo , Encherir _lesEncherirs)
         {
             _name = name; // associe le paramètre à la variable associé dans la base
             _firstname = firstname; // associe le paramètre à la variable associé dans la base
@@ -57,6 +52,10 @@ namespace PayeTonEnchère.models
             _password = password; // associe le paramètre à la variable associé dans la base
             _phone = phone; // associe le paramètre à la variable associé dans la base
             _pseudo = pseudo; // associe le paramètre à la variable associé dans la base
+
+            //Relation Collection 
+            //un utilisateur les encherirs 
+              _lesEncherirs =new List<Encherir>();
         }
 
         #endregion

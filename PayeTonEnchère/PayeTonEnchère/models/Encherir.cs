@@ -15,17 +15,25 @@ namespace PayeTonEnchère.models
 		private double _prixenchere;
 		private DateTime _dateenchere;
 
-
+		// Relation 
+		// encherir les encheres
+		private Enchere _lEncherir;
+		//un utilisateur enrechit
+		private User _leUser;
 		#endregion
 
 		#region Constructeur
-		public Encherir(int id,double prixenchere,DateTime dateenchere,Enchere laenchere_id, User leuser_id)
+		public Encherir(int id,double prixenchere,DateTime dateenchere,Enchere laenchere_id, User leuser_id, Enchere lEncherir,User leUser)
         {
 			_id= id;
 			_laenchere_id= laenchere_id;
 			_dateenchere= dateenchere;
 			_prixenchere= prixenchere;
 			this._leuser_id= leuser_id;
+
+			//Relation
+			_lEncherir= lEncherir;
+			_leUser=leUser
         }
 		#endregion
 
