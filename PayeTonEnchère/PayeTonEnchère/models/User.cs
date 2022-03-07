@@ -23,6 +23,17 @@ namespace PayeTonEnchère.models
 
         #region Constructeur
         /// <summary>
+        /// Constructeur simplifié
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        public User(string email, string password)
+        {
+            Email = email;
+            Password = password;
+        }
+
+        /// <summary>
         /// Constructeur de la classe User
         /// </summary>
         /// <param name="id"></param>
@@ -35,9 +46,8 @@ namespace PayeTonEnchère.models
         /// <param name="password"></param>
         /// <param name="phone"></param>
         /// <param name="pseudo"></param>
-        public User(int id, string name, string firstname, string address, int codepostale, string city, string email, string password, int phone, string pseudo)
+        public User(string name, string firstname, string address, int codepostale, string city, string email, string password, int phone, string pseudo)
         {
-            _id = id; // associe le paramètre à la variable associé dans la base
             _name = name; // associe le paramètre à la variable associé dans la base
             _firstname = firstname; // associe le paramètre à la variable associé dans la base
             _address = address; // associe le paramètre à la variable associé dans la base
@@ -60,7 +70,9 @@ namespace PayeTonEnchère.models
         public int Codepostale { get => _codepostale; set => _codepostale = value; } // accesseur/mutateur de la variable _codepostale
         public string City { get => _city; set => _city = value; } // accesseur/mutateur de la variable _city
         public string Email { get => _email; set => _email = value; } // accesseur/mutateur de la variable _email
-        public string Password { get => _password; set => _password = value; } // accesseur/mutateur de la variable password
+        public string Password { get => _password; set => if (value == _password) return;
+            _password = value;
+            OnPropertyChanged(nameof(Password)); } // accesseur/mutateur de la variable password
         public int Phone { get => _phone; set => _phone = value; } // accesseur/mutateur de la variable _phone
         public string Pseudo { get => _pseudo; set => _pseudo = value; } // accesseur/mutateur de la variable _pseudo
 

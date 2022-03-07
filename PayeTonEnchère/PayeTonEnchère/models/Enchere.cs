@@ -30,6 +30,8 @@ namespace PayeTonEnchère.models
             _dateend = dateend; // associe le paramètre à la variable associé dans la base
             _reserveprice = reserveprice; // associe le paramètre à la variable associé dans la base
             _finalprice = finalprice; // associe le paramètre à la variable associé dans la base
+
+            _collClass.Add(this);
         }
 
         #endregion
