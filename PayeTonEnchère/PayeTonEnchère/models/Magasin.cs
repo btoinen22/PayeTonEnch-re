@@ -24,12 +24,13 @@ namespace PayeTonEnchère.models
         private double _x; // longitude ( emplacement du magasin )
         private double _y; // latitude ( emplacement du magasin )
 
-        private List<Produit> _lesProduits; //associations avec la classe produit pour associer des produits pour un magasin
+        
         private List<Magasin> _collClass = new List<Magasin>(); // liste de tout les magasins instancier
 
-        // dictionnaire entre la classe magasin et produit
-        private Dictionary<Magasin, List<Produit>> _dictionnaireProduit;
-        #endregion
+        // Relation 
+        //associations avec la classe produit pour associer des produits pour un magasin
+        private List<Produit> _lesProduits; 
+          #endregion
 
         #region constructeur
 
@@ -59,10 +60,14 @@ namespace PayeTonEnchère.models
             
             _y = y; // associe le paramètre à la variable associé dans la base
 
-            _lesProduits = new List<Produit>(); // permet de créer une liste de produit pour un magasin
+           
 
             _collClass.Add(this); // ajoute automatiquement l'instance créer dans la liste _collClass
             
+            // Création de l'instance de la Relation 
+
+             // permet de créer une liste des produits pour le magasin
+            _lesProduits = new List<Produit>();
         }
         #endregion
 

@@ -10,7 +10,10 @@ namespace PayeTonEnchère.models
         private int _id; // ne contiendras un maximum de 3 ID pour les différent types d'enchères existantes
         private string _name; // enchère classique / enchère renversée / enchère flash
 
+        //Relation 
 
+        //Les encheres pour un type encheres
+        private List<Enchere> _lesEncheres;
         #endregion
 
         #region Constructeur
@@ -20,9 +23,11 @@ namespace PayeTonEnchère.models
         /// <param name="name"></param>
         /// 
 
-        public TypeEnchere(string name)
+        public TypeEnchere(string name,Enchere lesEncheres)
         {
             _name = name; // associe le paramètre à la variable associé dans la base
+
+            _lesEncheres = new List<Enchere>();
         }
 
         #endregion

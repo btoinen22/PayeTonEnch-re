@@ -13,6 +13,15 @@ namespace PayeTonEnchère.models
         private double _reserveprice; // prix de réserve sur l'enchère
         private double _finalprice; // prix final atteint par l'enchère
 
+        //Relation
+
+        //Object relation entre le Produit et les enchere
+        private Produit _leProduit;
+         //object un type d'enchere 
+        private TypeEnchere _leTypeEnchere;
+        // Collection les encherires une enchere
+        private List<Encherir> _lesEncherirs
+
         public static List<Enchere> _collClass = new List<Enchere>();
 
         #endregion
@@ -26,7 +35,7 @@ namespace PayeTonEnchère.models
         /// <param name="dateend"></param>
         /// <param name="reserveprice"></param>
         /// <param name="finalprice"></param>
-        public Enchere(DateTime datestart, DateTime dateend, double reserveprice, double finalprice)
+        public Enchere(DateTime datestart, DateTime dateend, double reserveprice, double finalprice, Produit leProduit, TypeEnchere leTypeEnchere, Encherir lesEncherirs)
         {
             _datestart = datestart; // associe le paramètre à la variable associé dans la base
             _dateend = dateend; // associe le paramètre à la variable associé dans la base
@@ -34,6 +43,14 @@ namespace PayeTonEnchère.models
             _finalprice = finalprice; // associe le paramètre à la variable associé dans la base
 
             _collClass.Add(this);
+
+            //relation
+            //language objet le produit
+            _leProduit = leProduit;
+            //object un type d'enchere 
+            _leTypeEnchere= leTypeEnchere
+            //encherire une enchere
+            _lesEncherirs= new List<Encherir>();
         }
 
         #endregion
@@ -44,6 +61,9 @@ namespace PayeTonEnchère.models
         public DateTime Dateend { get => _dateend; set => _dateend = value; } // accesseur/mutateur de la variable _dateend
         public double Reserveprice { get => _reserveprice; set => _reserveprice = value; } // accesseur/mutateur de la variable _reserveprice
         public double Finalprice { get => _finalprice; set => _finalprice = value; } // accesseur/mutateur de la variable _finalprice
+        
+        public Produit leProduit { get=> _leProduit; set => _leProduit = value; } 
+        public Enchere leTypeEnchere { get=> _leTypeEnchere; set => _leTypeEnchere = value; }
     }
 
          #endregion
