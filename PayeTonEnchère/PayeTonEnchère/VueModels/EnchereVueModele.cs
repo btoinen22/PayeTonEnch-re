@@ -17,10 +17,7 @@ namespace PayeTonEnchère.VueModels
 
         #region Constructeurs
 
-        public EnchereVueModele()
-        {
-            this.GetOneEnchere(new Enchere(DateTime.Now, DateTime.Now, 0, 0));
-        }
+        public EnchereVueModele() => this.GetOneEnchere(new Enchere(DateTime.Now, DateTime.Now, 0, 0));
 
 
         #endregion

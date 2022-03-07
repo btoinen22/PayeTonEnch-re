@@ -10,38 +10,47 @@ namespace PayeTonEnchère.models
 		#region Attribut
 
 		private int _id;
-		private Enchere _laenchere_id;
-		private User _leuser_id;
 		private double _prixenchere;
 		private DateTime _dateenchere;
 
-		// Relation 
-		// encherir les encheres
-		private Enchere _lEncherir;
+        private static List<Encherir> collClass = new List<Encherir>(); // liste de tout les encherissemnt 
+
+
+        // Relation 
+
+        // encherir les encheres
+        private Enchere _lEnchere;
+
 		//un utilisateur enrechit
 		private User _leUser;
-		#endregion
 
-		#region Constructeur
-		public Encherir(int id,double prixenchere,DateTime dateenchere,Enchere laenchere_id, User leuser_id, Enchere lEncherir,User leUser)
+
+        #endregion
+
+        #region Constructeur
+        public Encherir(double prixenchere, DateTime dateenchere, Enchere lEnchere, User leUser)
         {
-			_id= id;
-			_laenchere_id= laenchere_id;
-			_dateenchere= dateenchere;
-			_prixenchere= prixenchere;
-			this._leuser_id= leuser_id;
-
-			//Relation
-			_lEncherir= lEncherir;
-			_leUser=leUser
+            _prixenchere = prixenchere;
+            _dateenchere = dateenchere;
+            CollClass.Add(this);
+            _lEnchere = lEnchere;
+            _leUser = leUser;
         }
-		#endregion
+        #endregion
 
-		#region Getters/Setters
+        #region Getters/Setters
+        public int Id { get => _id; set => _id = value; }
+		public double Prixenchere { get => _prixenchere; set => _prixenchere = value; }
+		public DateTime Dateenchere { get => _dateenchere; set => _dateenchere = value; }
+		public static List<Encherir> CollClass { get => collClass; set => collClass = value; }
+		internal Enchere LEnchere { get => _lEnchere; set => _lEnchere = value; }
+		internal User LeUser { get => _leUser; set => _leUser = value; }
+
+
 		#endregion
 
 		#region Methodes
 		#endregion
 
-    }
+	}
 }

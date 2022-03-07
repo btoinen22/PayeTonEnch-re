@@ -1,4 +1,5 @@
 ﻿using PayeTonEnchère.VueModels;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,5 +14,9 @@ namespace PayeTonEnchère.Vues
             BindingContext = new AuthentificationVueModele();
         }
 
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

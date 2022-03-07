@@ -1,6 +1,8 @@
-﻿using System;
+﻿using PayeTonEnchère.Vues;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 
 namespace PayeTonEnchère
 {
@@ -10,7 +12,7 @@ namespace PayeTonEnchère
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new AccueilNonCo();
         }
 
         protected override void OnStart()

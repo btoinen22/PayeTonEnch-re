@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PayeTonEnchère.models
 {
-    internal class TypeEnchere
+    public class TypeEnchere
     {
         #region Attribut 
         private int _id; // ne contiendras un maximum de 3 ID pour les différent types d'enchères existantes

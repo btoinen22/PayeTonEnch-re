@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PayeTonEnchère.models
 {
-    internal class Enchere
+    public class Enchere
     {
         #region Attribut
         private int id; // identifiant unique d'une enchère lancé
@@ -13,6 +13,8 @@ namespace PayeTonEnchère.models
         private double _reserveprice; // prix de réserve sur l'enchère
         private double _finalprice; // prix final atteint par l'enchère
 
+        public static List<Enchere> _collClass = new List<Enchere>(); // liste de tout les enchere enregistré
+
         //Relation
 
         //Object relation entre le Produit et les enchere
@@ -20,7 +22,7 @@ namespace PayeTonEnchère.models
          //object un type d'enchere 
         private TypeEnchere _leTypeEnchere;
         // Collection les encherires une enchere
-        private List<Encherir> _lesEncherirs
+        private List<Encherir> _lesEncherirs;
 
         #endregion
 
@@ -45,10 +47,16 @@ namespace PayeTonEnchère.models
             //relation
             //language objet le produit
             _leProduit = leProduit;
+
             //object un type d'enchere 
-            _leTypeEnchere= leTypeEnchere
+            _leTypeEnchere = leTypeEnchere;
+
             //encherire une enchere
             _lesEncherirs= new List<Encherir>();
+        }
+
+        public Enchere(DateTime now1, DateTime now2, int v1, int v2)
+        {
         }
 
         #endregion
@@ -61,7 +69,7 @@ namespace PayeTonEnchère.models
         public double Finalprice { get => _finalprice; set => _finalprice = value; } // accesseur/mutateur de la variable _finalprice
         
         public Produit leProduit { get=> _leProduit; set => _leProduit = value; } 
-        public Enchere leTypeEnchere { get=> _leTypeEnchere; set => _leTypeEnchere = value; }
+        public TypeEnchere leTypeEnchere { get => _leTypeEnchere; set => _leTypeEnchere = value; }
     }
 
          #endregion

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PayeTonEnchère.models
 {
-    internal class User
+    public class User
     {
         #region Attribut
 
@@ -52,7 +52,7 @@ namespace PayeTonEnchère.models
         /// <param name="password"></param>
         /// <param name="phone"></param>
         /// <param name="pseudo"></param>
-        public User(string name, string firstname, string address, int codepostale, string city, string email, string password, int phone, string pseudo , Encherir _lesEncherirs)
+        public User(string name, string firstname, string address, string codepostale, string city, string email, string password, string phone, string pseudo )
         {
             _name = name; // associe le paramètre à la variable associé dans la base
             _firstname = firstname; // associe le paramètre à la variable associé dans la base

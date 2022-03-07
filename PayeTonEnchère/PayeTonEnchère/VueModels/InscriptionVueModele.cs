@@ -1,9 +1,12 @@
 ﻿using PayeTonEnchère.models;
 using PayeTonEnchère.services;
+using PayeTonEnchère.Vues;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PayeTonEnchère.VueModels
 {
@@ -28,21 +31,22 @@ namespace PayeTonEnchère.VueModels
         #region Getters/Setters
         public ICommand CommandBoutonRetour { get; }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
         #endregion
 
         #region Methodes
         public void ActionCommandBoutonRetour()
         {
-            Application.Current.MainPage = new IndexPageVue();
+            Application.Current.MainPage = new Page();
         }
         public async void PostUser(User unUser)
         {
 
-            int resultat = await _apiServices.PostAsync<User>(unUser, "api/postUser");
+            bool resultat = await _apiServices.PostAsync<User>(unUser, "api/postUser");
         }
         #endregion
-          
-        /* ---------------------------- */
+         
 
 
     }

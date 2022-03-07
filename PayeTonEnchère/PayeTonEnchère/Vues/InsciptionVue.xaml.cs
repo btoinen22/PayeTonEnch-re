@@ -6,6 +6,7 @@ using System.Text.RegularExpressions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using PayeTonEnchère.services;
+using System.Threading.Tasks;
 
 namespace PayeTonEnchère.Vues
 {
@@ -63,14 +64,13 @@ namespace PayeTonEnchère.Vues
                 // vérifie que l'email saisie est correct
                 if (ValidateEmail(EmailEntry.Text))
                 {
-                    NewEmailOrNot();
                     if (User._collClass.Count() == 0)
                     {
                         // vérifier que le mot de passe entré et le même entré dans le mot de passe de vérification
-                        if (PasswordEntry.Text == PasswordVerifyEntry.Text)
+                       if (PasswordEntry.Text == PasswordVerifyEntry.Text)
                         {
-                            await inscriptionapi.PostAsync(new User
-                            {
+                           await inscriptionapi.PostAsync(new User
+                           {
                                 Name = NomEntry.Text,
                                 Firstname = PrenomEntry.Text,
                                 Address = AdresseEntry.Text,
@@ -83,7 +83,7 @@ namespace PayeTonEnchère.Vues
                             },"user");
 
                             await DisplayAlert("Bravo", "enregistrement réussi", "ok");
-                            Application.Current.MainPage = new AuthentificationPage();
+                            Application.Current.MainPage = new Page();
                         }
                         else
                         {
@@ -104,6 +104,11 @@ namespace PayeTonEnchère.Vues
             {
                 await DisplayAlert("Erreur", "Vous n'avez pas remplis tous les champs nécessaire !", "ok");
             }
+        }
+
+        private Task DisplayAlert(string v1, string v2, string v3)
+        {
+            throw new NotImplementedException();
         }
     }
 }

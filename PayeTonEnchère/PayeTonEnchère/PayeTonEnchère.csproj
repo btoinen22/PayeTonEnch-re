@@ -13,13 +13,17 @@
   <ItemGroup>
     <PackageReference Include="MvvmLightLibs" Version="5.4.1.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Update="OLDMainPage.xaml.cs">
       <DependentUpon>OLDMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Vues\AccueilNonCo.xaml.cs">
+      <DependentUpon>AccueilNonCo.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -34,6 +38,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Vues\ListeProduitVue.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Vues\AccueilNonCo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
