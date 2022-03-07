@@ -12,6 +12,8 @@ namespace PayeTonEnchère.models
         private double _reserveprice; // prix de réserve sur l'enchère
         private double _finalprice; // prix final atteint par l'enchère
 
+        public static List<Enchere> _collClass = new List<Enchere>();
+
         /// <summary>
         /// Constructeur de la classe Enchere
         /// </summary>
@@ -25,6 +27,8 @@ namespace PayeTonEnchère.models
             _dateend = dateend; // associe le paramètre à la variable associé dans la base
             _reserveprice = reserveprice; // associe le paramètre à la variable associé dans la base
             _finalprice = finalprice; // associe le paramètre à la variable associé dans la base
+
+            _collClass.Add(this);
         }
 
         public int Id { get => id; set => id = value; } // accesseur/mutateur de la variable _id

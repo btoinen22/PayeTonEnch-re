@@ -16,7 +16,7 @@ namespace PayeTonEnchère.models
         private double _realprice; // indiquation du prix réel du produit enregistré
 
         private List<Magasin> _lesMagasins; // liste de magasin ou le produit est disponible
-        private List<Produit> _collClass = new List<Produit>(); // liste de tout les produit enregistré ( pas necessairement utile )
+        public static List<Produit> _collClass = new List<Produit>(); // liste de tout les produit enregistré ( pas necessairement utile )
 
         /// <summary>
         /// constructeur de la classe Produit
