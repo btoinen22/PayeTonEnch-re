@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              mc:Ignorable="d"
-             x:Class="wapi1812.Vues.AuthentificationPage">
+             x:Class="PayeTonEnchère.Vues.AuthentificationPage">
     <ContentPage.Content>
         <StackLayout >
 

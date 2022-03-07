@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PayeTonEnchère.models
 {
-    internal class Magasin
+    public class Magasin
     {
          #region Attriubut
        

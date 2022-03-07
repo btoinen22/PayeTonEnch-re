@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PayeTonEnchère.models
 {
-    internal class TypeEnchere
+    public class TypeEnchere
     {
         #region Attribut 
         private int _id; // ne contiendras un maximum de 3 ID pour les différent types d'enchères existantes
@@ -23,7 +23,7 @@ namespace PayeTonEnchère.models
         /// <param name="name"></param>
         /// 
 
-        public TypeEnchere(string name,Enchere lesEncheres)
+        public TypeEnchere(string name)
         {
             _name = name; // associe le paramètre à la variable associé dans la base
 

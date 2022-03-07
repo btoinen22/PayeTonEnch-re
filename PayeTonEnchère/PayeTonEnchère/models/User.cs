@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PayeTonEnchère.models
 {
-    internal class User
+    public class User
     {
         #region Attribut
 
@@ -28,16 +28,6 @@ namespace PayeTonEnchère.models
         #endregion
 
         #region Constructeur
-        /// <summary>
-        /// Constructeur simplifié
-        /// </summary>
-        /// <param name="email"></param>
-        /// <param name="password"></param>
-        public User(string email, string password)
-        {
-            Email = email;
-            Password = password;
-        }
 
         /// <summary>
         /// Constructeur de la classe User
@@ -52,7 +42,7 @@ namespace PayeTonEnchère.models
         /// <param name="password"></param>
         /// <param name="phone"></param>
         /// <param name="pseudo"></param>
-        public User(string name, string firstname, string address, int codepostale, string city, string email, string password, int phone, string pseudo , Encherir _lesEncherirs)
+        public User(string name, string firstname, string address, string codepostale, string city, string email, string password, string phone, string pseudo)
         {
             _name = name; // associe le paramètre à la variable associé dans la base
             _firstname = firstname; // associe le paramètre à la variable associé dans la base
@@ -66,9 +56,9 @@ namespace PayeTonEnchère.models
 
             _collClass.Add(this);
 
-            //Relation Collection 
+            //Relation 
             //un utilisateur les encherirs 
-              _lesEncherirs =new List<Encherir>();
+              _lesEncherirs = new List<Encherir>();
         }
 
         #endregion
@@ -89,10 +79,19 @@ namespace PayeTonEnchère.models
         } // accesseur/mutateur de la variable password
         public string Phone { get => _phone; set => _phone = value; } // accesseur/mutateur de la variable _phone
         public string Pseudo { get => _pseudo; set => _pseudo = value; } // accesseur/mutateur de la variable _pseudo
+        public List<Encherir> LesEncherirs { get => _lesEncherirs; set => _lesEncherirs = value; }
 
         #endregion
 
         #region Methodes
+
+        public List<User> allUsers()
+        {
+            List<User> users = new List<User>();
+            foreach (User use in _collClass)
+                users.Add(use);
+            return users;
+        }
 
         #endregion
 

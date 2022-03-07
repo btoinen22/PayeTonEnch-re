@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace PayeTonEnchère.VueModels
 {
-    public class ListeProduitVueModele : ContentView
+    public class ListeProduitVueModele
     {
         #region Attributs
         private readonly api _apiServices = new api();

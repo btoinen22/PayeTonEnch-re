@@ -10,7 +10,7 @@ namespace PayeTonEnchère.VueModels
 {
     public class AuthentificationVueModele : INotifyPropertyChanged
     {
-        #region Attributs
+        /* #region Attributs
 
         private readonly ApiAuthentification _apiServices = new ApiAuthentification();
         private readonly ApiRegistration _apiServicesRegistration = new ApiRegistration();
@@ -77,7 +77,7 @@ namespace PayeTonEnchère.VueModels
         #region Methodes
         public void ActionPageRegistration()
         {
-            User unUser = new User(_identifiant, _motDePasse);
+            User unUser = new User(_nom, _prenom, address,_code, ville, email, _password, _tel,);
             Task.Run(async () =>
             {
                 if (await _apiServicesRegistration.PostRegistrationAsync(unUser))
@@ -126,6 +126,7 @@ namespace PayeTonEnchère.VueModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+        #endregion */
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

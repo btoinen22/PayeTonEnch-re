@@ -10,38 +10,41 @@ namespace PayeTonEnchère.models
 		#region Attribut
 
 		private int _id;
-		private Enchere _laenchere_id;
-		private User _leuser_id;
 		private double _prixenchere;
 		private DateTime _dateenchere;
 
 		// Relation 
 		// encherir les encheres
-		private Enchere _lEncherir;
+		internal Enchere _lEncher;
 		//un utilisateur enrechit
-		private User _leUser;
+		internal User _leUser;
 		#endregion
 
 		#region Constructeur
-		public Encherir(int id,double prixenchere,DateTime dateenchere,Enchere laenchere_id, User leuser_id, Enchere lEncherir,User leUser)
+		public Encherir(double prixenchere, DateTime dateenchere /*, Enchere lEncher, User leUser*/)
         {
-			_id= id;
-			_laenchere_id= laenchere_id;
-			_dateenchere= dateenchere;
-			_prixenchere= prixenchere;
-			this._leuser_id= leuser_id;
+			Dateenchere= dateenchere;
+			Prixenchere= prixenchere;
 
 			//Relation
-			_lEncherir= lEncherir;
-			_leUser=leUser
+			/*_lEncher= lEncher;
+			_leUser = leUser;*/
         }
+
 		#endregion
 
 		#region Getters/Setters
+
+		public int Id { get => _id; set => _id = value; }
+		public double Prixenchere { get => _prixenchere; set => _prixenchere = value; }
+		public DateTime Dateenchere { get => _dateenchere; set => _dateenchere = value; }
+		//internal Enchere LEncher { get => _lEncher; set => _lEncher = value; }
+		//internal User LeUser { get => _leUser; set => _leUser = value; }
+
 		#endregion
 
 		#region Methodes
 		#endregion
 
-    }
+	}
 }

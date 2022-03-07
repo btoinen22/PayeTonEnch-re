@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PayeTonEnchère.models
 {
-    internal class Produit
+    public class Produit
     {
         #region Attribut
         private int _id; // variable _id est l'dentifiant unique d'un produit
