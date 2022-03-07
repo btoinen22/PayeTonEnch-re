@@ -63,8 +63,6 @@ namespace PayeTonEnchère.models
 
             _collClass.Add(this); // ajoute automatiquement l'instance créer dans la liste _collClass
             
-            // création de l'instance 
-            _dictionnaireProduit = new Dictionary<this, List<Produit> >();
         }
         #endregion
 
