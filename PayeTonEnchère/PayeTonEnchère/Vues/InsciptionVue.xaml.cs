@@ -1,26 +1,18 @@
-﻿using GalaSoft.MvvmLight.Views;
-using PayeTonEnchère.models;
+﻿using PayeTonEnchère.models;
 using PayeTonEnchère.VueModels;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using PayeTonEnchère.services;
 
 namespace PayeTonEnchère.Vues
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class InsciptionVue : ContentView
     {
-        private string _username;
-        private string _password;
-        private bool _areCredentialsInvalid;
+        api inscriptionapi = new api();
 
         public InsciptionVue()
         {
@@ -65,57 +57,37 @@ namespace PayeTonEnchère.Vues
             if (!string.IsNullOrEmpty(EmailEntry.Text) && !string.IsNullOrEmpty(PasswordEntry.Text)
                 && !string.IsNullOrEmpty(PasswordVerifyEntry.Text) && !string.IsNullOrEmpty(NomEntry.Text)
                 && !string.IsNullOrEmpty(PrenomEntry.Text) && !string.IsNullOrEmpty(NumEntry.Text)
-                && !string.IsNullOrEmpty(FormationEntry.Text) && !string.IsNullOrEmpty(AdresseEntry.Text)
-                && !string.IsNullOrEmpty(CodePostaleEntry.Text) && !string.IsNullOrEmpty(TarifEntry.Text)
-                && !string.IsNullOrEmpty(PresentationEntry.Text))
-            {
+                && !string.IsNullOrEmpty(AdresseEntry.Text)
+                && !string.IsNullOrEmpty(CodePostaleEntry.Text) && !string.IsNullOrEmpty(PseudoEntry.Text)
+             ){
                 // vérifie que l'email saisie est correct
                 if (ValidateEmail(EmailEntry.Text))
                 {
                     NewEmailOrNot();
-                    if (Professionnel.CollProfessionnelExistant.Count == 0)
+                    if (User._collClass.Count() == 0)
                     {
-                        // faire en sorte que l'utilisateur puisse seulement cocher un genre et non 2 
-                        if ((FemmeEntry.IsChecked == true && HommeEntry.IsChecked == true) || (FemmeEntry.IsChecked == false && HommeEntry.IsChecked == false))
+                        // vérifier que le mot de passe entré et le même entré dans le mot de passe de vérification
+                        if (PasswordEntry.Text == PasswordVerifyEntry.Text)
                         {
-                            await DisplayAlert("Erreur", "Vous ne pouvez pas avoir 2 genres de coché !", "ok");
+                            await inscriptionapi.PostAsync(new User
+                            {
+                                Name = NomEntry.Text,
+                                Firstname = PrenomEntry.Text,
+                                Address = AdresseEntry.Text,
+                                Codepostale = CodePostaleEntry.Text,
+                                City = VilleEntry.Text,
+                                Phone = NumEntry.Text,
+                                Email = EmailEntry.Text,
+                                Password = PasswordEntry.Text,
+                                Pseudo = PseudoEntry.Text,
+                            },"user");
+
+                            await DisplayAlert("Bravo", "enregistrement réussi", "ok");
+                            Application.Current.MainPage = new AuthentificationPage();
                         }
                         else
-                        {   // vérifier que le mot de passe entré et le même entré dans le mot de passe de vérification
-                            if (PasswordEntry.Text == PasswordVerifyEntry.Text)
-                            {
-                                if (FemmeEntry.IsChecked == true)
-                                {
-                                    GenreChoice = "Femme";
-                                }
-                                else
-                                {
-                                    GenreChoice = "Homme";
-                                }
-                                await App.Database.SaveItemAsync(new Professionnel
-                                {
-                                    Nom = NomEntry.Text,
-                                    Prenom = PrenomEntry.Text,
-                                    Genre = GenreChoice,
-                                    DateDeNaissance = DateEntry.Date,
-                                    NumeroTelephone = NumEntry.Text,
-                                    Email = EmailEntry.Text,
-                                    Password = PasswordEntry.Text,
-                                    Formation = FormationEntry.Text,
-                                    Adresse = AdresseEntry.Text,
-                                    CodePostale = CodePostaleEntry.Text,
-                                    Ville = VilleEntry.Text,
-                                    Tarif = TarifEntry.Text,
-                                    Presentation = PresentationEntry.Text
-                                });
-
-                                await DisplayAlert("Bravo", "enregistrement réussi", "ok");
-                                Application.Current.MainPage = new PageConnexionVue();
-                            }
-                            else
-                            {
-                                await DisplayAlert("Erreur", "Vos mots de passes ne sont pas les mêmes", "ok");
-                            }
+                        {
+                            await DisplayAlert("Erreur", "Vos mots de passes ne sont pas les mêmes", "ok");
                         }
                     }
                     else

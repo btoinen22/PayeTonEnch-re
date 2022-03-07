@@ -12,12 +12,14 @@ namespace PayeTonEnchère.models
         private string _name; //vvaraible de nomination du user
         private string _firstname; //variable du prenom du user
         private string _address; //variable de adresse du user
-        private int _codepostale; // code postale du user
+        private string _codepostale; // code postale du user
         private string _city; // ville du user
         private string _email; // email du user
         private string _password; // mot de passe du user
-        private int _phone; // numéro de telephone du user
+        private string _phone; // numéro de telephone du user
         private string _pseudo; // psuedo utilisé lors des enchère par le user
+
+        public static List<User> _collClass = new List<User>();
 
         //Relation 
         //un utilisateur les encherires
@@ -26,7 +28,16 @@ namespace PayeTonEnchère.models
         #endregion
 
         #region Constructeur
-        
+        /// <summary>
+        /// Constructeur simplifié
+        /// </summary>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        public User(string email, string password)
+        {
+            Email = email;
+            Password = password;
+        }
 
         /// <summary>
         /// Constructeur de la classe User
@@ -53,6 +64,8 @@ namespace PayeTonEnchère.models
             _phone = phone; // associe le paramètre à la variable associé dans la base
             _pseudo = pseudo; // associe le paramètre à la variable associé dans la base
 
+            _collClass.Add(this);
+
             //Relation Collection 
             //un utilisateur les encherirs 
               _lesEncherirs =new List<Encherir>();
@@ -66,13 +79,15 @@ namespace PayeTonEnchère.models
         public string Name { get => _name; set => _name = value; } // accesseur/mutateur de la variable _name
         public string Firstname { get => _firstname; set => _firstname = value; } // accesseur/mutateur de la variable _firstname
         public string Address { get => _address; set => _address = value; } // accesseur/mutateur de la variable _address
-        public int Codepostale { get => _codepostale; set => _codepostale = value; } // accesseur/mutateur de la variable _codepostale
+        public string Codepostale { get => _codepostale; set => _codepostale = value; } // accesseur/mutateur de la variable _codepostale
         public string City { get => _city; set => _city = value; } // accesseur/mutateur de la variable _city
         public string Email { get => _email; set => _email = value; } // accesseur/mutateur de la variable _email
-        public string Password { get => _password; set => if (value == _password) return;
-            _password = value;
-            OnPropertyChanged(nameof(Password)); } // accesseur/mutateur de la variable password
-        public int Phone { get => _phone; set => _phone = value; } // accesseur/mutateur de la variable _phone
+        public string Password
+        {
+            get => _password;
+            set => _password = value;
+        } // accesseur/mutateur de la variable password
+        public string Phone { get => _phone; set => _phone = value; } // accesseur/mutateur de la variable _phone
         public string Pseudo { get => _pseudo; set => _pseudo = value; } // accesseur/mutateur de la variable _pseudo
 
         #endregion

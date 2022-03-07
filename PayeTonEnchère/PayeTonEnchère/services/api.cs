@@ -40,9 +40,23 @@ namespace PayeTonEnchère.services
 
         }
 
-        internal Task<ObservableCollection<T>> GetOneAsync<T>(string v, List<T> collClass, T uneEnchere)
+        public async Task<ObservableCollection<T>> GetOneAsync<T>(string paramUrl, List<T> param, T param2)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var jsonstring = JsonConvert.SerializeObject(param2);
+                var clientHttp = new HttpClient();
+                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
+
+                var response = await clientHttp.PostAsync(Constantes.APIenchere + paramUrl, jsonContent);
+                var json = await response.Content.ReadAsStringAsync();
+                JsonConvert.DeserializeObject<List<T>>(json);
+                return GestionCollection.GetListes<T>(param);
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         /// <summary>
