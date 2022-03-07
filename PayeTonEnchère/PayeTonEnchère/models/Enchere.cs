@@ -6,13 +6,16 @@ namespace PayeTonEnchère.models
 {
     internal class Enchere
     {
+        #region Attribut
         private int id; // identifiant unique d'une enchère lancé
         private DateTime _datestart; // date-heure de début de l'enchère
         private DateTime _dateend; // date-heure de fin de l'enchère
         private double _reserveprice; // prix de réserve sur l'enchère
         private double _finalprice; // prix final atteint par l'enchère
 
-        public static List<Enchere> _collClass = new List<Enchere>();
+        #endregion
+
+        #region Constructeur
 
         /// <summary>
         /// Constructeur de la classe Enchere
@@ -31,10 +34,19 @@ namespace PayeTonEnchère.models
             _collClass.Add(this);
         }
 
+        #endregion
+
+        #region Getters/setters
         public int Id { get => id; set => id = value; } // accesseur/mutateur de la variable _id
         public DateTime Datestart { get => _datestart; set => _datestart = value; } // accesseur/mutateur de la variable _datestart
         public DateTime Dateend { get => _dateend; set => _dateend = value; } // accesseur/mutateur de la variable _dateend
         public double Reserveprice { get => _reserveprice; set => _reserveprice = value; } // accesseur/mutateur de la variable _reserveprice
         public double Finalprice { get => _finalprice; set => _finalprice = value; } // accesseur/mutateur de la variable _finalprice
     }
+
+         #endregion
+
+        #region Methodes
+
+        #endregion
 }
