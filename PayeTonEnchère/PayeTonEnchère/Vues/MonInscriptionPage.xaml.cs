@@ -54,7 +54,6 @@ namespace PayeTonEnchère.Vues
         /// <returns> cas 1 : false cas 2 : true </returns>
         public async void EmailExistant()
         {
-            bool rep;
             if (this.ValidateEmail === true)
             {
                 foreach (User Utilisateur in User._collClass)
@@ -91,7 +90,7 @@ namespace PayeTonEnchère.Vues
                 {
                     // ajout d'un user dans la base de donnée
                     // a partir des entry
-                    await inscriptionapi.PostAsync(new User
+                    await inscriptionapi.PostAsync(param: new User
                     {
                         Name = NameEntry.Text,
                         Firstname = FirstnameEntry.Text,
