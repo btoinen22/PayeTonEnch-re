@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using PayeTonEnchère.models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -76,6 +77,32 @@ namespace PayeTonEnchère.services
                 var client = new HttpClient();
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
                 var response = await client.PostAsync(Constantes.APIenchere + paramUrl, jsonContent);
+                var content = await response.Content.ReadAsStringAsync();
+                var result = content == "OK" ? true : false;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Permet la création d'un user 
+        /// avec l'API
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="param"></param>
+        /// <param name="paramUrl"></param>
+        /// <returns></returns>
+        public async Task<bool> PostUser<T>(T param, string paramUrl)
+        {
+            var jsonstring = JsonConvert.SerializeObject(param);
+            try
+            {
+                var client = new HttpClient();
+                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(Constantes.APIenchere + "api/PostUser", jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
                 var result = content == "OK" ? true : false;
                 return result;

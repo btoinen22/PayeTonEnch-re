@@ -14,7 +14,7 @@ namespace PayeTonEnchère.services
         #region Attributs 
         #endregion
         #region Methodes
-        public async Task<bool> GetAuthAsync(string Email, string password)
+      /*  public async Task<bool> GetAuthAsync(string Email, string password)
         {
             User modelData = new User(Email, password);
             var jsonstring = JsonConvert.SerializeObject(modelData);
@@ -47,7 +47,7 @@ namespace PayeTonEnchère.services
             {
                 // Possible that device doesn't support secure storage on device.
             }
-        }
-        #endregion
+        }*/
+        #endregion 
     }
 }

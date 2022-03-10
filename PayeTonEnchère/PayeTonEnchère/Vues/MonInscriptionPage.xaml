@@ -3,136 +3,96 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PayeTonEnchère.Vues.MonInscriptionPage">
     <ContentPage.Content>
-        <ScrollView VerticalOptions="StartAndExpand">
+        <ScrollView
+            VerticalOptions="StartAndExpand">
             <Grid>
+
                 <BoxView>
                     <BoxView.Background>
                         <LinearGradientBrush>
-                            <GradientStop Color="AntiqueWhite" Offset="0"/>
-                            <GradientStop Color="CadetBlue" Offset="1"/>
+                            <GradientStop Color="AntiqueWhite" Offset="2"/>
+                            <GradientStop Color="WhiteSmoke" Offset="3"/>
                         </LinearGradientBrush>
                     </BoxView.Background>
                 </BoxView>
 
-                <StackLayout HorizontalOptions="Center" Spacing="20" Margin="10,20,10,10">
-                    <Image Source="#"
-                           WidthRequest="180"
-                           HeightRequest="140"/>
-                    <Label Text="Inscription"
-                           HorizontalOptions="Center"
-                           TextColor="AntiqueWhite"/>
+                <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" Margin="0,150,0,0" >
+                    <Label Text="S'inscrire"
+                           TextColor="CadetBlue"
+                           FontSize="Title"
+                           />
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="Center" Spacing="30" Margin="0,240,0,0" >
-                    <Frame BackgroundColor="#BF043055" HasShadow="False" CornerRadius="23" >
-                        <StackLayout Spacing="15">
+                <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" Spacing="30" Margin="0,240,0,0" >
+                    <StackLayout Spacing="15">
 
-                            <Entry x:Name="EmailEntry"
+                        <Entry x:Name="EmailEntry"
                             Placeholder="Email"
-                            TextColor="AntiqueWhite"
-                            PlaceholderColor="AntiqueWhite"
+                            TextColor="CadetBlue"
+                            PlaceholderColor="CadetBlue"
                             WidthRequest="275"
                             MaxLength="30"
                             Keyboard="Email"
-                            ClearButtonVisibility="WhileEditing"/>
+                            ClearButtonVisibility="WhileEditing"
+                        />
 
-                            <Entry x:Name="PasswordEntry"
+                        <Entry x:Name="PasswordEntry"
                             Placeholder="Create Password"
-                            TextColor="AntiqueWhite"
-                            PlaceholderColor="AntiqueWhite"
+                            TextColor="CadetBlue"
+                            PlaceholderColor="CadetBlue"
                             WidthRequest="275"
                             MaxLength="30"
                             IsSpellCheckEnabled="false"
                             IsTextPredictionEnabled="false"
                             IsPassword="true"
-                            ClearButtonVisibility="WhileEditing"/>
+                            ClearButtonVisibility="WhileEditing"
+                        />
 
-                            <Entry x:Name="PasswordVerifyEntry"
+                        <Entry x:Name="PasswordVerifyEntry"
                             Placeholder="Verify Password"
-                            TextColor="AntiqueWhite"
-                            PlaceholderColor="AntiqueWhite"
+                            TextColor="CadetBlue"
+                            PlaceholderColor="CadetBlue"
                             WidthRequest="275"
                             MaxLength="30"
                             IsSpellCheckEnabled="false"
                             IsTextPredictionEnabled="false"
                             IsPassword="true"
-                            ClearButtonVisibility="WhileEditing"/>
+                            ClearButtonVisibility="WhileEditing"
+                        />
 
-                            <Entry x:Name="NameEntry"
-                            Placeholder="Nom"
-                            TextColor="AntiqueWhite"
-                            PlaceholderColor="AntiqueWhite"
+                        <Entry x:Name="PseudoEntry"
+                            Placeholder="Pseudo"
+                            TextColor="CadetBlue"
+                            PlaceholderColor="CadetBlue"
                             WidthRequest="275"
                             MaxLength="30"
-                            ClearButtonVisibility="WhileEditing"/>
+                            ClearButtonVisibility="WhileEditing"
+                        />
 
-                            <Entry x:Name="FirstnameEntry"
-                            Placeholder="Prénom"
-                            PlaceholderColor="AntiqueWhite"
-                            TextColor="AntiqueWhite"
-                            WidthRequest="275"
-                            MaxLength="30"
-                            ClearButtonVisibility="WhileEditing"/>
+                        <Button Text="photo"
+                                Clicked="AjoutPhoto"
+                                CornerRadius="7"
+                                TextColor="AntiqueWhite"
+                                BackgroundColor="CadetBlue"
+                        />
+                        
+                        <Image x:Name="image1"
+                                   HeightRequest="350"
+                                   WidthRequest="300"
+                               Aspect="AspectFill"
+                        />
 
-                            <Entry x:Name="PseudoEntry"
-                            Placeholder="Nom"
-                            TextColor="AntiqueWhite"
-                            PlaceholderColor="AntiqueWhite"
-                            WidthRequest="275"
-                            MaxLength="30"
-                            ClearButtonVisibility="WhileEditing"/>
-
-                            <Entry x:Name="NumEntry"
-                            Placeholder="N° Téléphone"
-                            TextColor="AntiqueWhite"
-                            PlaceholderColor="AntiqueWhite"
-                            WidthRequest="275"
-                            MaxLength="10"
-                            Keyboard="Telephone"
-                            ClearButtonVisibility="WhileEditing"/>
-
-                            <Entry x:Name="AddressEntry"
-                            Placeholder="Adresse"
-                            PlaceholderColor="AntiqueWhite"
-                            TextColor="AntiqueWhite"
-                            WidthRequest="275"
-                            MaxLength="30"
-                            ClearButtonVisibility="WhileEditing"/>
-
-                            <Entry x:Name="CodePostaleEntry"
-                            Placeholder="Code Postale"
-                            PlaceholderColor="AntiqueWhite"
-                            TextColor="AntiqueWhite"
-                            WidthRequest="275"
-                            MaxLength="5"
-                            Keyboard="Telephone"
-                            ClearButtonVisibility="WhileEditing"/>
-
-                            <Entry x:Name="CityEntry"
-                            Placeholder="Ville"
-                            PlaceholderColor="AntiqueWhite"
-                            TextColor="AntiqueWhite"
-                            WidthRequest="275"
-                            MaxLength="30"
-                            ClearButtonVisibility="WhileEditing"/>
-                        </StackLayout>
-                    </Frame>
-
-                    <StackLayout HorizontalOptions="Center" Spacing="30" Orientation="Horizontal">
-                        <Button Text="Retour" 
-                        BackgroundColor="CadetBlue"
-                        TextColor="AntiqueWhite"
-                        WidthRequest="150"
-                        VerticalOptions="Center"
-                        CornerRadius="23"
-                        Command="{Binding CommandBoutonRetour}"/>
                         <Button Text="Valider" 
-                        BackgroundColor="CadetBlue"
-                        TextColor="AntiqueWhite"
-                        WidthRequest="150"
-                        VerticalOptions="Center"
-                        CornerRadius="23"
-                        Clicked="Inscrire"/>
+                            BackgroundColor="CadetBlue"
+                            TextColor="AntiqueWhite"
+                            WidthRequest="75"
+                            VerticalOptions="Center"
+                            ScaleX="1"
+                            ScaleY="1"
+                            CornerRadius="7"
+                            Clicked="EmailExistant_clicked"
+                        />
+
                     </StackLayout>
                 </StackLayout>
             </Grid>
