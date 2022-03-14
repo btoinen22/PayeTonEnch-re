@@ -3,6 +3,7 @@ using PayeTonEnchère.models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
@@ -36,6 +37,7 @@ namespace PayeTonEnchère.services
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
                 return null;
             }
 
@@ -56,6 +58,7 @@ namespace PayeTonEnchère.services
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
                 return null;
             }
         }
@@ -83,6 +86,8 @@ namespace PayeTonEnchère.services
             }
             catch (Exception ex)
             {
+                var error = string.Format("Time: {0}\r\nError: Unhandled Exception\r\n{1}\n\n", DateTime.Now, ex);
+                Console.WriteLine(error);
                 return false;
             }
         }
@@ -109,6 +114,7 @@ namespace PayeTonEnchère.services
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
                 return false;
             }
         }

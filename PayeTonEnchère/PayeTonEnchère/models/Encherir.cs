@@ -15,9 +15,9 @@ namespace PayeTonEnchère.models
 
 		// Relation 
 		// encherir les encheres
-		internal Enchere _lEncher;
+		public Enchere _lEncher;
 		//un utilisateur enrechit
-		internal User _leUser;
+		public User _leUser;
 		#endregion
 
 		#region Constructeur

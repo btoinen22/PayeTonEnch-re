@@ -90,7 +90,7 @@ namespace PayeTonEnchère.Vues
                 {
                     // ajout d'un user dans la base de donnée
                     // a partir des entry
-                    await inscriptionapi.PostAsync(new User(
+                    await inscriptionapi.PostUser(new User(
                         image1.ToString(),
                         EmailEntry.Text,
                         PasswordEntry.Text,

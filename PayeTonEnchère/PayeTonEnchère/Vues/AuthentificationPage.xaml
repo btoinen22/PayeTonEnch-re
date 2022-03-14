@@ -31,7 +31,7 @@
 
 
 
-                <BoxView WidthRequest="1" BackgroundColor="#13153F" HeightRequest="5" Margin="0,0,0,15" />
+                <BoxView WidthRequest="1" BackgroundColor="AntiqueWhite" HeightRequest="5" Margin="0,0,0,15" />
 
                 <Entry x:Name="txtUtilisateur"
                  Placeholder="Username" 
@@ -60,12 +60,12 @@
 
                     <Button Text="CONNEXION"
               FontSize="14"
-             BackgroundColor="Teal" Command="{Binding CommandeButtonLogIn}" Padding="0" Margin="0,50,0,0" CornerRadius="15"
+             BackgroundColor="CadetBlue" Command="{Binding CommandeButtonLogIn}" Padding="0" Margin="0,50,0,0" CornerRadius="15"
              Grid.Row="0" Grid.Column="1" />
 
                     <Button Text="LISTING"
               FontSize="14"
-             BackgroundColor="Teal" Command="{Binding CommandeButtonListing}" Padding="0" Margin="0,50,0,0" CornerRadius="15"
+             BackgroundColor="CadetBlue" Command="{Binding CommandeButtonListing}" Padding="0" Margin="0,50,0,0" CornerRadius="15"
              Grid.Row="0" Grid.Column="2" />
                 </Grid>
 
