@@ -1,7 +1,9 @@
 ﻿using Newtonsoft.Json;
+using PayeTonEnchère.models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Net.Http;
 using System.Reflection;
 using System.Text;
@@ -35,6 +37,7 @@ namespace PayeTonEnchère.services
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
                 return null;
             }
 
@@ -55,6 +58,7 @@ namespace PayeTonEnchère.services
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
                 return null;
             }
         }
@@ -75,13 +79,82 @@ namespace PayeTonEnchère.services
             {
                 var client = new HttpClient();
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Constantes.APIenchere + paramUrl, jsonContent);
+                var response = await client.PostAsync(Constantes.APIenchere + "api/"+paramUrl, jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
                 var result = content == "OK" ? true : false;
                 return result;
             }
             catch (Exception ex)
             {
+                var error = string.Format("Time: {0}\r\nError: Unhandled Exception\r\n{1}\n\n", DateTime.Now, ex);
+                Console.WriteLine(error);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Permet la création d'un user 
+        /// a partir de l'API
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="param"></param>
+        /// <param name="paramUrl"></param>
+        /// <returns></returns>
+        public async Task<bool> PostUser<T>(T param)
+        {
+            var jsonstring = JsonConvert.SerializeObject(param);
+            try
+            {
+                var client = new HttpClient();
+                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(Constantes.APIenchere + "postUser", jsonContent);
+                var content = await response.Content.ReadAsStringAsync();
+                var result = content == "OK" ? true : false;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                return false;
+            }
+        }
+
+        public async Task<bool> GetAuthAsync<T>(T param, string paramUrl)
+        {
+            var jsonstring = JsonConvert.SerializeObject(param);
+            try
+            {
+                var client = new HttpClient();
+                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(Constantes.APIenchere + "Get", jsonContent);
+                var content = await response.Content.ReadAsStringAsync();
+                var result = content == "OK" ? true : false;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                return false;
+            }
+        }
+
+        
+
+        public async Task<bool> GetAuth<T>(T param, string paramUrl)
+        {
+            var jsonstring = JsonConvert.SerializeObject(param);
+            try
+            {
+                var client = new HttpClient();
+                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(Constantes.APIenchere + "GetUserByMailAndPass", jsonContent);
+                var content = await response.Content.ReadAsStringAsync();
+                var result = content == "OK" ? true : false;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
                 return false;
             }
         }

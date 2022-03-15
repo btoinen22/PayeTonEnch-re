@@ -6,17 +6,11 @@ using Xamarin.Forms.Xaml;
 namespace PayeTonEnchère.Vues
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AuthentificationPage : ContentView
+    public partial class AuthentificationPage : ContentPage
     {
         public AuthentificationPage()
         {
-            InitializeComponent();
             BindingContext = new AuthentificationVueModele();
-        }
-
-        private void InitializeComponent()
-        {
-            throw new NotImplementedException();
         }
     }
 }

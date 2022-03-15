@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:imageeditor="clr-namespace:Syncfusion.SfImageEditor.XForms;assembly=Syncfusion.SfImageEditor.XForms"
+             x:Class="PayeTonEnchère.Vues.MonInscriptionPage">
+    <ContentPage.Content>
+        <ScrollView
+            VerticalOptions="StartAndExpand">
+            <Grid>
+
+                <BoxView>
+                    <BoxView.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="AntiqueWhite" Offset="2"/>
+                            <GradientStop Color="WhiteSmoke" Offset="3"/>
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
+
+                <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" Margin="0,150,0,0" >
+                    <Label Text="S'inscrire"
+                           TextColor="CadetBlue"
+                           FontSize="Title"
+                           />
+                </StackLayout>
+
+                <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" Spacing="30" Margin="0,240,0,0" >
+                    <StackLayout Spacing="15">
+
+                        <Entry x:Name="EmailEntry"
+                            Placeholder="Email"
+                            TextColor="CadetBlue"
+                            PlaceholderColor="CadetBlue"
+                            WidthRequest="275"
+                            MaxLength="30"
+                            Keyboard="Email"
+                            ClearButtonVisibility="WhileEditing"
+                        />
+
+                        <Entry x:Name="PasswordEntry"
+                            Placeholder="Create Password"
+                            TextColor="CadetBlue"
+                            PlaceholderColor="CadetBlue"
+                            WidthRequest="275"
+                            MaxLength="30"
+                            IsSpellCheckEnabled="false"
+                            IsTextPredictionEnabled="false"
+                            IsPassword="true"
+                            ClearButtonVisibility="WhileEditing"
+                        />
+
+                        <Entry x:Name="PasswordVerifyEntry"
+                            Placeholder="Verify Password"
+                            TextColor="CadetBlue"
+                            PlaceholderColor="CadetBlue"
+                            WidthRequest="275"
+                            MaxLength="30"
+                            IsSpellCheckEnabled="false"
+                            IsTextPredictionEnabled="false"
+                            IsPassword="true"
+                            ClearButtonVisibility="WhileEditing"
+                        />
+
+                        <Entry x:Name="PseudoEntry"
+                            Placeholder="Pseudo"
+                            TextColor="CadetBlue"
+                            PlaceholderColor="CadetBlue"
+                            WidthRequest="275"
+                            MaxLength="30"
+                            ClearButtonVisibility="WhileEditing"
+                        />
+
+                        <Button Text="photo"
+                             Clicked="AjoutPhoto"
+                             CornerRadius="7"
+                             TextColor="AntiqueWhite"
+                             BackgroundColor="CadetBlue"
+                        />
+                        
+                        <Image x:Name="image1"
+                                   HeightRequest="350"
+                                   WidthRequest="300"
+                               Aspect="AspectFill"
+                        />
+
+                        <Button Text="Valider" 
+                            BackgroundColor="CadetBlue"
+                            TextColor="AntiqueWhite"
+                            WidthRequest="75"
+                            VerticalOptions="Center"
+                            ScaleX="1"
+                            ScaleY="1"
+                            CornerRadius="7"
+                            Clicked="EmailExistant_clicked"
+                        />
+
+                    </StackLayout>
+                </StackLayout>
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

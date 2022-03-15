@@ -11,6 +11,7 @@ namespace PayeTonEnchère.VueModels
     public class AuthentificationVueModele : INotifyPropertyChanged
     {
         #region Attributs
+        api _apiService = new api();
 
         private readonly ApiAuthentification _apiServices = new ApiAuthentification();
         private readonly ApiRegistration _apiServicesRegistration = new ApiRegistration();
@@ -18,7 +19,7 @@ namespace PayeTonEnchère.VueModels
         private string _identifiant;
         private string _motDePasse;
         private string _imgAuth = "https://st.depositphotos.com/1695366/1400/v/950/depositphotos_14001488-stock-illustration-cartoon-impatient-man-waiting.jpg";
-        private bool auth = false;
+        private bool auth;
         #endregion
         #region Constructeurs
         public AuthentificationVueModele()
@@ -73,22 +74,35 @@ namespace PayeTonEnchère.VueModels
                 OnPropertyChanged(nameof(ImgAuth));
             }
         }
+
+        public bool Auth
+        {
+            get
+            {
+                return auth;
+            }
+
+            set
+            {
+                auth = value;
+            }
+        }
         #endregion
         #region Methodes
         public void ActionPageRegistration()
         {
-            User unUser = new User(_identifiant, _motDePasse);
+            User unUser = new User(Identifiant,MotDePasse);
             Task.Run(async () =>
             {
                 if (await _apiServicesRegistration.PostRegistrationAsync(unUser))
                 {
                     ImgAuth = "https://www.aslbadminton.fr/wp-content/uploads/2016/11/Ok-257x300.png";
-                    auth = true;
+                    Auth = true;
                 }
                 else
                 {
                     ImgAuth = "http://dd03.blogs.apf.asso.fr/media/02/01/2130280108.jpg";
-                    auth = false;
+                    Auth = false;
                 }
             });
         }
@@ -98,10 +112,10 @@ namespace PayeTonEnchère.VueModels
 
             Task.Run(async () =>
             {
-                if (await _apiServices.GetAuthAsync(_identifiant, _motDePasse))
+                if (await _apiService.GetAuthAsync(new User(Identifiant,MotDePasse),"user"))
                 {
                     ImgAuth = "https://www.aslbadminton.fr/wp-content/uploads/2016/11/Ok-257x300.png";
-                    auth = true;
+                    Auth = true;
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         Application.Current.MainPage = new NavigationPage(new Page());
@@ -111,7 +125,7 @@ namespace PayeTonEnchère.VueModels
                 else
                 {
                     ImgAuth = "http://dd03.blogs.apf.asso.fr/media/02/01/2130280108.jpg";
-                    auth = false;
+                    Auth = false;
                 }
 
             });

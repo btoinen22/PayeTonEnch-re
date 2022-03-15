@@ -23,7 +23,7 @@ namespace PayeTonEnchère.models
         /// <param name="name"></param>
         /// 
 
-        public TypeEnchere(string name,Enchere lesEncheres)
+        public TypeEnchere(string name)
         {
             _name = name; // associe le paramètre à la variable associé dans la base
 

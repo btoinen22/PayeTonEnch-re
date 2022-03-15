@@ -12,7 +12,7 @@ namespace PayeTonEnchère
         {
             InitializeComponent();
 
-            MainPage = new AccueilNonCo();
+            MainPage = new MonInscriptionPage();
         }
 
         protected override void OnStart()

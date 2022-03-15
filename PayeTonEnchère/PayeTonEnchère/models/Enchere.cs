@@ -24,6 +24,8 @@ namespace PayeTonEnchère.models
         // Collection les encherires une enchere
         private List<Encherir> _lesEncherirs;
 
+        public static List<Enchere> _collClass = new List<Enchere>();
+
         #endregion
 
         #region Constructeur
@@ -35,7 +37,7 @@ namespace PayeTonEnchère.models
         /// <param name="dateend"></param>
         /// <param name="reserveprice"></param>
         /// <param name="finalprice"></param>
-        public Enchere(DateTime datestart, DateTime dateend, double reserveprice, double finalprice, Produit leProduit, TypeEnchere leTypeEnchere, Encherir lesEncherirs)
+        public Enchere(DateTime datestart, DateTime dateend, double reserveprice, double finalprice, Produit leProduit, TypeEnchere leTypeEnchere)
         {
             _datestart = datestart; // associe le paramètre à la variable associé dans la base
             _dateend = dateend; // associe le paramètre à la variable associé dans la base
@@ -49,8 +51,7 @@ namespace PayeTonEnchère.models
             _leProduit = leProduit;
 
             //object un type d'enchere 
-            _leTypeEnchere = leTypeEnchere;
-
+            _leTypeEnchere= leTypeEnchere
             //encherire une enchere
             _lesEncherirs= new List<Encherir>();
         }
@@ -69,7 +70,7 @@ namespace PayeTonEnchère.models
         public double Finalprice { get => _finalprice; set => _finalprice = value; } // accesseur/mutateur de la variable _finalprice
         
         public Produit leProduit { get=> _leProduit; set => _leProduit = value; } 
-        public TypeEnchere leTypeEnchere { get => _leTypeEnchere; set => _leTypeEnchere = value; }
+        public Enchere leTypeEnchere { get=> _leTypeEnchere; set => _leTypeEnchere = value; }
     }
 
          #endregion
