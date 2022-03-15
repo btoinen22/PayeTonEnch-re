@@ -41,9 +41,10 @@ namespace PayeTonEnchère.VueModels
         }
         public async void PostUser(User unUser)
         {
-
-            bool resultat = await _apiServices.PostAsync<User>(unUser, "api/postUser");
+            await _apiServices.PostAsync<User>(unUser, "postUser");
         }
+
+        
         #endregion
 
 

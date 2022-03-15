@@ -119,3 +119,6 @@ dotnet_naming_style.casse_pascal.capitalization = pascal_case
 [*.{cs,vb}]
 tab_width = 4
 indent_size = 4
+
+# IDE0032: Utiliser auto-property
+dotnet_style_prefer_auto_properties = false

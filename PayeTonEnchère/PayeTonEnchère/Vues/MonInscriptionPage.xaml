@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:imageeditor="clr-namespace:Syncfusion.SfImageEditor.XForms;assembly=Syncfusion.SfImageEditor.XForms"
              x:Class="PayeTonEnchère.Vues.MonInscriptionPage">
     <ContentPage.Content>
         <ScrollView
@@ -70,10 +71,10 @@
                         />
 
                         <Button Text="photo"
-                                Clicked="AjoutPhoto"
-                                CornerRadius="7"
-                                TextColor="AntiqueWhite"
-                                BackgroundColor="CadetBlue"
+                             Clicked="AjoutPhoto"
+                             CornerRadius="7"
+                             TextColor="AntiqueWhite"
+                             BackgroundColor="CadetBlue"
                         />
                         
                         <Image x:Name="image1"

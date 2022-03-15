@@ -24,6 +24,7 @@ namespace PayeTonEnchère.services
             }
             catch (Exception ex)
             {
+                Console.Write(ex.ToString());
                 return false;
             }
         }

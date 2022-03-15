@@ -3,6 +3,7 @@ using PayeTonEnchère.services;
 using PayeTonEnchère.VueModels;
 using System;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
@@ -59,15 +60,7 @@ namespace PayeTonEnchère.Vues
         {
             if (this.ValidateEmail() == true) // vérifie la validité du mail
             {
-                foreach (User Utilisateur in User._collClass) // cherche des données dans la collClass User
-                {
-                    if (Utilisateur.Email != this.EmailEntry.Text) // si les Emails de la collClass ne correspondent pas au mail du Entry
-                    {
-                        this.Inscrire(); // alors lance l'inscription de l'utilisateur                 
-                    }
-                    else // sinon affiche un message d'erreur
-                        await DisplayAlert("Erreur", "Cette adresse email est déjà existante! Vous avez peut-être déjà un compte ?", "ok", "cancel");
-                }
+                this.Inscrire(); // alors lance l'inscription de l'utilisateur
             }
             else if (this.ValidateEmail() == false) // si email invalide affiche un message d'erreur
             {
@@ -91,11 +84,11 @@ namespace PayeTonEnchère.Vues
                     // ajout d'un user dans la base de donnée
                     // a partir des entry
                     await inscriptionapi.PostUser(new User(
-                        image1.ToString(),
                         EmailEntry.Text,
                         PasswordEntry.Text,
-                        PseudoEntry.Text),
-                        "user");
+                        ImageToByteArray(image1),
+                        PseudoEntry.Text
+                        )) ;
                     // affiche un message disant que l'inscription à été faites
                     await DisplayAlert("Bravo", "enregistrement réussi", "ok", "cancel");
                     // redirection vers la page X
@@ -123,9 +116,21 @@ namespace PayeTonEnchère.Vues
                 (sender as Button).IsEnabled = true;
         }
 
-        private void image1_SizeChanged(object sender, EventArgs e)
+        // convertion base64
+        public async static byte[] ImageToByteArray(Xamarin.Forms.Image x)
         {
-            
+            var stream = x.GetStream();
+            var bytes = new byte[x.Length];
+            await x.ReadAsync(bytes, 0, (int)x.Length);
+            string base64 = System.Convert.ToBase64String(bytes);
+
+            // --------------------
+
+            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
+
+            if (photo != null)
+                x.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
         }
-    }
+        
+    } 
 }

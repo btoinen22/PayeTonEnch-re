@@ -79,7 +79,7 @@ namespace PayeTonEnchère.services
             {
                 var client = new HttpClient();
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Constantes.APIenchere + paramUrl, jsonContent);
+                var response = await client.PostAsync(Constantes.APIenchere + "api/"+paramUrl, jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
                 var result = content == "OK" ? true : false;
                 return result;
@@ -94,20 +94,60 @@ namespace PayeTonEnchère.services
 
         /// <summary>
         /// Permet la création d'un user 
-        /// avec l'API
+        /// a partir de l'API
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="param"></param>
         /// <param name="paramUrl"></param>
         /// <returns></returns>
-        public async Task<bool> PostUser<T>(T param, string paramUrl)
+        public async Task<bool> PostUser<T>(T param)
         {
             var jsonstring = JsonConvert.SerializeObject(param);
             try
             {
                 var client = new HttpClient();
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Constantes.APIenchere + "api/PostUser", jsonContent);
+                var response = await client.PostAsync(Constantes.APIenchere + "postUser", jsonContent);
+                var content = await response.Content.ReadAsStringAsync();
+                var result = content == "OK" ? true : false;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                return false;
+            }
+        }
+
+        public async Task<bool> GetAuthAsync<T>(T param, string paramUrl)
+        {
+            var jsonstring = JsonConvert.SerializeObject(param);
+            try
+            {
+                var client = new HttpClient();
+                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(Constantes.APIenchere + "Get", jsonContent);
+                var content = await response.Content.ReadAsStringAsync();
+                var result = content == "OK" ? true : false;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                return false;
+            }
+        }
+
+        
+
+        public async Task<bool> GetAuth<T>(T param, string paramUrl)
+        {
+            var jsonstring = JsonConvert.SerializeObject(param);
+            try
+            {
+                var client = new HttpClient();
+                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(Constantes.APIenchere + "GetUserByMailAndPass", jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
                 var result = content == "OK" ? true : false;
                 return result;
