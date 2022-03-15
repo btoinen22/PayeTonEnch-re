@@ -8,12 +8,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
+
 namespace PayeTonEnchère.Vues
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class AcccueilNonCO : ContentPage
     {
-        public Page1()
+        public AccueilNonCo()
         {
             InitializeComponent();
             BindingContext = new AccueilNonCoVueModels();

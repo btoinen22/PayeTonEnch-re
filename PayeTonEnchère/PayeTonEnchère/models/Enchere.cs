@@ -51,7 +51,7 @@ namespace PayeTonEnchère.models
             _leProduit = leProduit;
 
             //object un type d'enchere 
-            _leTypeEnchere= leTypeEnchere
+            _leTypeEnchere= leTypeEnchere;
             //encherire une enchere
             _lesEncherirs= new List<Encherir>();
         }
