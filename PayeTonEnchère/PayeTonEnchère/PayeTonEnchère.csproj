@@ -31,6 +31,9 @@
     <Compile Update="OLDMainPage.xaml.cs">
       <DependentUpon>OLDMainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Vues\AccueilNonCo.xaml.cs">
+      <DependentUpon>AccueilNonCo.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +47,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Vues\MonInscriptionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Vues\AccueilNonCo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

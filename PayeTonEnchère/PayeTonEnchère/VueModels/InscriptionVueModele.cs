@@ -1,5 +1,6 @@
 ﻿using PayeTonEnchère.models;
 using PayeTonEnchère.services;
+using PayeTonEnchère.Vues;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

@@ -1,11 +1,13 @@
-﻿using PayeTonEnchère.models;
+﻿using Newtonsoft.Json;
+using PayeTonEnchère.models;
 using PayeTonEnchère.services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
-
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace PayeTonEnchère.VueModels
@@ -23,7 +25,6 @@ namespace PayeTonEnchère.VueModels
         public ListeProduitVueModele()
         {
             Resultat = false;
-            PostProduit(new Produit("test", "test", 10));
             //GetListeProduits();
         }
 
@@ -43,11 +44,31 @@ namespace PayeTonEnchère.VueModels
                    ("api/getProduits", Produit._collClass );
         }
 
-        public async void PostProduit(Produit unProduit)
+        /// <summary>
+        /// ajout de tout les objets créer dans la base de donnée
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="param"></param>
+        /// <param name="paramUrl"></param>
+        /// <returns></returns>
+        public async Task<bool> PostAsync<T>(T param, string paramUrl)
         {
 
-            Resultat = await _apiServices.PostAsync<Produit>
-                   (unProduit, "api/postProduit");
+            var jsonstring = JsonConvert.SerializeObject(param);
+
+            try
+            {
+                var client = new HttpClient();
+                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync(Constantes.APIenchere + paramUrl, jsonContent);
+                var content = await response.Content.ReadAsStringAsync();
+                var result = content == "OK" ? true : false;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
         #endregion
 
