@@ -17,7 +17,7 @@ namespace PayeTonEnchère.Vues
     public partial class MonInscriptionPage : ContentPage
     {
         //Création d'une instance d'api pour accéder au méthode de l'API symfony
-        readonly api inscriptionapi = new api();
+        readonly Api inscriptionapi = new Api();
 
         /// <summary>
         /// Initialisation d'une nouvelle instance de l'InsciptionVueModele
@@ -86,7 +86,7 @@ namespace PayeTonEnchère.Vues
                     await inscriptionapi.PostUser(new User(
                         EmailEntry.Text,
                         PasswordEntry.Text,
-                        null,
+                        Photo64,
                         PseudoEntry.Text
                         )) ;
                     // affiche un message disant que l'inscription à été faites
@@ -110,27 +110,28 @@ namespace PayeTonEnchère.Vues
             Stream stream = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
             if (stream != null)
             {
-                image1.Source = ImageSource.FromStream(() => stream);
+                using (MemoryStream memory = new MemoryStream())
+                {
+                    stream.CopyTo(memory);
+                    byte[] data = memory.ToArray();
+                    image1.Source = ImageSource.FromStream(() => new MemoryStream(data));
+                    Photo64 = Convert.ToBase64String(data);
+                }
+                
             }
 
                 (sender as Button).IsEnabled = true;
         }
 
-        // convertion base64
-       /* public async static byte[] ImageToByteArray(Xamarin.Forms.Image x)
+        public string Photo64
         {
-            var stream = x.GetStream();
-            var bytes = new byte[x.Length];
-            await x.ReadAsync(bytes, 0, (int)x.Length);
-            string base64 = System.Convert.ToBase64String(bytes);
-
-            // --------------------
-
-            var photo = await Plugin.Media.CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
-
-            if (photo != null)
-                x.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
-        }*/
-        
+            get;set;
+        }
+        public static byte[] ImageToByteArray(System.Drawing.Image x)
+        {
+            ImageConverter _imageConverter = new ImageConverter();
+            byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
+            return xByte;
+        }
     } 
 }

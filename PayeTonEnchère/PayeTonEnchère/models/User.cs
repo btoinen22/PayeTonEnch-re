@@ -12,7 +12,7 @@ namespace PayeTonEnchère.models
         private string _email; // email du user
         private string _password; // mot de passe du user
         private string _pseudo; // psuedo utilisé lors des enchère par le user
-        private byte [] _photo; // photo utilisé par l'utilisateur
+        private string _photo; // photo utilisé par l'utilisateur
 
         public static List<User> _collClass = new List<User>();
 
@@ -31,7 +31,7 @@ namespace PayeTonEnchère.models
         /// <param name="email"></param>
         /// <param name="password"></param>
         /// <param name="pseudo"></param>
-        public User(string name, string firstname, string address, string codepostale, string city, string email, string password, string phone, string pseudo )
+        public User(string email, string password, string photo, string pseudo)
         {
             _email = email; // associe le paramètre à la variable associé dans la base
             _password = password; // associe le paramètre à la variable associé dans la base
@@ -64,13 +64,13 @@ namespace PayeTonEnchère.models
         } // accesseur/mutateur de la variable password
         public string Pseudo { get => _pseudo; set => _pseudo = value; } // accesseur/mutateur de la variable _pseudo
         public List<Encherir> LesEncherirs { get => _lesEncherirs; set => _lesEncherirs = value; }
-        public byte [] Photo { get => _photo; set => _photo = value; }
+        public string Photo { get => _photo; set => _photo = value; }
 
         #endregion
 
         #region Methodes
 
-        public List<User> allUsers()
+        public List<User> AllUsers()
         {
             List<User> users = new List<User>();
             foreach (User use in _collClass)

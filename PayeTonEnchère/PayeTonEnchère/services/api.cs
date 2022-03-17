@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PayeTonEnchère.services
 {
-    internal class api
+    internal class Api
     {
         /// <summary>
         /// Cette methode est générique
@@ -79,7 +79,7 @@ namespace PayeTonEnchère.services
             {
                 var client = new HttpClient();
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Constantes.APIenchere + "api/"+paramUrl, jsonContent);
+                var response = await client.PostAsync(Constantes.APIenchere +paramUrl, jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
                 var result = content == "OK" ? true : false;
                 return result;
@@ -119,7 +119,7 @@ namespace PayeTonEnchère.services
             }
         }
 
-        public async Task<bool> GetAuthAsync<T>(T param, string paramUrl)
+        public async Task<bool> GetAuthAsync<T>(T param)
         {
             var jsonstring = JsonConvert.SerializeObject(param);
             try
@@ -140,7 +140,7 @@ namespace PayeTonEnchère.services
 
         
 
-        public async Task<bool> GetAuth<T>(T param, string paramUrl)
+        public async Task<bool> GetAuth<T>(T param)
         {
             var jsonstring = JsonConvert.SerializeObject(param);
             try
@@ -149,7 +149,9 @@ namespace PayeTonEnchère.services
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
                 var response = await client.PostAsync(Constantes.APIenchere + "GetUserByMailAndPass", jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
+#pragma warning disable IDE0075 // Simplifier l’expression conditionnelle
                 var result = content == "OK" ? true : false;
+#pragma warning restore IDE0075 // Simplifier l’expression conditionnelle
                 return result;
             }
             catch (Exception ex)
