@@ -86,7 +86,7 @@ namespace PayeTonEnchère.Vues
                     await inscriptionapi.PostUser(new User(
                         EmailEntry.Text,
                         PasswordEntry.Text,
-                        ImageToByteArray(image1),
+                        null,
                         PseudoEntry.Text
                         )) ;
                     // affiche un message disant que l'inscription à été faites
@@ -117,7 +117,7 @@ namespace PayeTonEnchère.Vues
         }
 
         // convertion base64
-        public async static byte[] ImageToByteArray(Xamarin.Forms.Image x)
+       /* public async static byte[] ImageToByteArray(Xamarin.Forms.Image x)
         {
             var stream = x.GetStream();
             var bytes = new byte[x.Length];
@@ -130,7 +130,7 @@ namespace PayeTonEnchère.Vues
 
             if (photo != null)
                 x.Source = ImageSource.FromStream(() => { return photo.GetStream(); });
-        }
+        }*/
         
     } 
 }
