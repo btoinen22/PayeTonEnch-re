@@ -24,8 +24,6 @@ namespace PayeTonEnchère.models
         // Collection les encherires une enchere
         private List<Encherir> _lesEncherirs;
 
-        public static List<Enchere> _collClass = new List<Enchere>();
-
         #endregion
 
         #region Constructeur

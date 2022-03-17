@@ -11,7 +11,7 @@ namespace PayeTonEnchère.VueModels
     public class AuthentificationVueModele : INotifyPropertyChanged
     {
         #region Attributs
-        api _apiService = new api();
+        Api _apiService = new Api();
 
         private readonly ApiAuthentification _apiServices = new ApiAuthentification();
         private readonly ApiRegistration _apiServicesRegistration = new ApiRegistration();
@@ -112,7 +112,7 @@ namespace PayeTonEnchère.VueModels
 
             Task.Run(async () =>
             {
-                if (await _apiService.GetAuthAsync(new User(Identifiant,MotDePasse),"user"))
+                if (await _apiService.GetAuthAsync(new User(Identifiant,MotDePasse)))
                 {
                     ImgAuth = "https://www.aslbadminton.fr/wp-content/uploads/2016/11/Ok-257x300.png";
                     Auth = true;
