@@ -14,10 +14,15 @@ namespace PayeTonEnchère.Vues
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AcccueilNonCO : ContentPage
     {
-        public AccueilNonCo()
+        public AcccueilNonCO()
         {
             InitializeComponent();
             BindingContext = new AccueilNonCoVueModels();
+        }
+
+        private void InitializeComponent()
+        {
+            throw new NotImplementedException();
         }
     }
 }
