@@ -12,7 +12,7 @@ namespace PayeTonEnchère
         {
             InitializeComponent();
 
-            MainPage = new Page1();
+            MainPage = new AppShell();
         }
 
         protected override void OnStart()

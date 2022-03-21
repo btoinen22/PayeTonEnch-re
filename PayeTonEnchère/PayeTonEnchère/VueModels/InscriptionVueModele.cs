@@ -1,4 +1,5 @@
-﻿using PayeTonEnchère.models;
+﻿using Android.Content.Res;
+using PayeTonEnchère.models;
 using PayeTonEnchère.services;
 using PayeTonEnchère.Vues;
 using System;
@@ -10,7 +11,7 @@ using Xamarin.Forms;
 
 namespace PayeTonEnchère.VueModels
 {
-    internal class InscriptionVueModele : INotifyPropertyChanged
+    internal class InscriptionVueModele : BaseVueModele
     {
         #region Attributs
 
@@ -22,40 +23,24 @@ namespace PayeTonEnchère.VueModels
 
         public InscriptionVueModele()
         {
-            PostUser(new User("test", "test"));
-            CommandBoutonRetour = new Command(ActionCommandBoutonRetour);
+            gotoconnexion = new Command(() => gotoco());
         }
+
 
         #endregion
 
         #region Getters/Setters
-        public ICommand CommandBoutonRetour { get; }
 
-        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
-        {
-            add
-            {
-                throw new NotImplementedException();
-            }
-
-            remove
-            {
-                throw new NotImplementedException();
-            }
-        }
+        public ICommand gotoconnexion { get; }
 
         #endregion
 
         #region Methodes
-        public void ActionCommandBoutonRetour()
+        public async void gotoco()
         {
-            Application.Current.MainPage = new Page();
+            var route = $"{nameof(MaConnexionPage)}";
+            await Shell.Current.GoToAsync(route);
         }
-        public async void PostUser(User unUser)
-        {
-            await _apiServices.PostAsync<User>(unUser, "postUser");
-        }
-
         
         #endregion
 

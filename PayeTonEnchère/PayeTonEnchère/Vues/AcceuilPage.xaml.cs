@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace PayeTonEnchère.Vues
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Page1 : ContentPage
+    public partial class AcceuilPage : ContentPage
     {
-        public Page1()
+        public AcceuilPage()
         {
             InitializeComponent();
         }
