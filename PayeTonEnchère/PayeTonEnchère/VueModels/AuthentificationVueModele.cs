@@ -1,7 +1,5 @@
 ﻿using PayeTonEnchère.models;
 using PayeTonEnchère.services;
-using PayeTonEnchère.Vues;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -10,99 +8,138 @@ using Xamarin.Forms;
 
 namespace PayeTonEnchère.VueModels
 {
-    public class AuthentificationVueModele : BaseVueModele
+    public class AuthentificationVueModele : INotifyPropertyChanged
     {
         #region Attributs
-
         Api _apiService = new Api();
 
-        protected Page page;
-        private string _emailEntry,
-            _passwordEntry;
+        private readonly ApiAuthentification _apiServices = new ApiAuthentification();
+        private readonly ApiRegistration _apiServicesRegistration = new ApiRegistration();
 
+        private string _identifiant;
+        private string _motDePasse;
+        private string _imgAuth = "https://st.depositphotos.com/1695366/1400/v/950/depositphotos_14001488-stock-illustration-cartoon-impatient-man-waiting.jpg";
+        private bool auth;
         #endregion
-
         #region Constructeurs
-        public AuthentificationVueModele(Page page)
+        public AuthentificationVueModele()
         {
-            this.page = page;
-            CommandBoutonConnexion = new Command(OnSubmit);
-            CommandBoutonInscription = new Command(Inscription);
+            CommandeButtonRegistration = new Command(ActionPageRegistration);
+            CommandeButtonLogIn = new Command(ActionPage);
         }
         #endregion
-
         #region Getters/Setters
-
-        public string EmailEntry
+        public ICommand CommandeButtonLogIn { get; }
+        public ICommand CommandeButtonRegistration { get; }
+        public ICommand CommandeButtonListing { get; }
+        public string Identifiant
         {
             get
             {
-                return _emailEntry;
+                return _identifiant;
             }
             set
             {
-                SetProperty(ref _emailEntry, value);
+                if (_identifiant != value)
+                {
+                    _identifiant = value;
+                    OnPropertyChanged(nameof(Identifiant));
+                }
             }
         }
-
-        public string PasswordEntry
+        public string MotDePasse
         {
             get
             {
-                return _passwordEntry;
+                return _motDePasse;
             }
             set
             {
-                SetProperty(ref _passwordEntry, value);
+                if (_motDePasse != value)
+                {
+                    _motDePasse = value;
+                    OnPropertyChanged(nameof(MotDePasse));
+                }
+            }
+        }
+        public string ImgAuth
+        {
+            get
+            {
+                return _imgAuth;
+            }
+            set
+            {
+                _imgAuth = value;
+                OnPropertyChanged(nameof(ImgAuth));
             }
         }
 
-        public ICommand CommandBoutonConnexion { get; private set; } // getter/setter du boutton CommandBouttonConnexion
-        public ICommand CommandBoutonInscription { get; private set; } // getter/setter du boutton  CommandBouttonInscription
+        public bool Auth
+        {
+            get
+            {
+                return auth;
+            }
 
+            set
+            {
+                auth = value;
+            }
+        }
         #endregion
-
         #region Methodes
-
-        // méthode permettant à un utilisateur de se connecter
-        public async void OnSubmit()
+        public void ActionPageRegistration()
         {
-            // créer un dictionnaire param
-            Dictionary<string, object> param = new Dictionary<string, object>(); 
-            //ajoute la valeur du mail et du mot de passe au dictionnaire
-            param.Add("Email", EmailEntry);
-            param.Add("Password", PasswordEntry);
-            // crée une instance de user à partir des informations récupérer par le mot de passe et le mail à l'aide
-            // de la méthode d'API GetUserByMdpAndMail
-            User user = await GetUserByMdpAndMail(param);
-            if (user == null) // si l'utilisateur n'existe pas affiche un message d'erreur
-                await Application.Current.MainPage.DisplayAlert(ServiceApi.ErrorTitle,ServiceApi.ErrorDescriptionConnexion,
-                    ServiceApi.ErrorCancel);
-            else // sinon renvoi vers la page d'acceuil en tant qu'utilisateur connecté
+            User unUser = new User(Identifiant,MotDePasse);
+            Task.Run(async () =>
             {
-                Application.Current.MainPage = new AcceuilPage();
-            }
+                if (await _apiServicesRegistration.PostRegistrationAsync(unUser))
+                {
+                    ImgAuth = "https://www.aslbadminton.fr/wp-content/uploads/2016/11/Ok-257x300.png";
+                    Auth = true;
+                }
+                else
+                {
+                    ImgAuth = "http://dd03.blogs.apf.asso.fr/media/02/01/2130280108.jpg";
+                    Auth = false;
+                }
+            });
         }
 
-
-        /// <param name="param"></param> Dictionnaire d'objet initialiser dans le OnSubmit
-        /// <returns>récupère les données d'un user à partir de la méthode d'API GetOneAsync</returns>
-        public async Task<User> GetUserByMdpAndMail(Dictionary<string, object> param)
+        public void ActionPage()
         {
-            return await _apiService.GetOneAsync<User>(ServiceApi.ApiGetUserByMailAndPass, param);
-        }
 
-        /// <summary>
-        /// redirige vers la page d'inscription
-        /// </summary>
-        public async void Inscription()
-        {
-            var route = $"{nameof(MonInscriptionPage)}"; // créer un objet ayant pour valeur la route shell de l'inscription
-            await Shell.Current.GoToAsync(route); // redirige vers la valeur d'objet route
+            Task.Run(async () =>
+            {
+                if (await _apiService.GetAuthAsync(new User(Identifiant,MotDePasse)))
+                {
+                    ImgAuth = "https://www.aslbadminton.fr/wp-content/uploads/2016/11/Ok-257x300.png";
+                    Auth = true;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        Application.Current.MainPage = new NavigationPage(new Page());
+                    });
+
+                }
+                else
+                {
+                    ImgAuth = "http://dd03.blogs.apf.asso.fr/media/02/01/2130280108.jpg";
+                    Auth = false;
+                }
+
+            });
+
+
         }
 
         #endregion
         #region notifications
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
         #endregion
     }
 }

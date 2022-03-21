@@ -34,8 +34,8 @@ namespace PayeTonEnchère.VueModels
         public async void GetOneEnchere(Enchere uneEnchere)
         {
             Enchere._collClass.Clear();
-            /*MaListeEnchere = await _apiServices.GetOneAsync<Enchere>
-                   ("api/getEnchere", Enchere._collClass, uneEnchere);*/
+            MaListeEnchere = await _apiServices.GetOneAsync<Enchere>
+                   ("api/getEnchere", Enchere._collClass, uneEnchere);
         }
         #endregion
     }

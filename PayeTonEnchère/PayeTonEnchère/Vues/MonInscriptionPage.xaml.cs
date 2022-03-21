@@ -95,8 +95,8 @@ namespace PayeTonEnchère.Vues
                         ),ServiceApi.ApiPostUser) ;
                     // affiche un message disant que l'inscription à été faites
                     await DisplayAlert("Bravo", "enregistrement réussi", "ok", "cancel");
-                    // redirection vers la page de connexion
-                    await Navigation.PushAsync(new MaConnexionPage());
+                    // redirection vers la page X
+                    Application.Current.MainPage = new MaConnexionPage();
                 }
                 else // si les mdp sont différents affiche un message d'erreur
                 {
@@ -132,11 +132,6 @@ namespace PayeTonEnchère.Vues
             ImageConverter _imageConverter = new ImageConverter();
             byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
             return xByte;
-        }
-
-        private async void DejaInscrit_clicked(object sender, EventArgs e)
-        {
-            //await Shell.Current.GoToAsync();
         }
     } 
 }

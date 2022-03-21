@@ -94,13 +94,6 @@
                             Clicked="EmailExistant_clicked"
                         />
 
-                        <Button Text="deja inscrit"
-                            FontSize="14"
-                            BackgroundColor="CadetBlue" Command="{Binding gotoconnexion}"
-                            Padding="0" Margin="0,50,0,0" CornerRadius="15"
-                            Grid.Row="3" Grid.Column="1" 
-                        />
-
                     </StackLayout>
                 </StackLayout>
             </Grid>
