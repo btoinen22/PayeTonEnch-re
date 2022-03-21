@@ -68,7 +68,7 @@ namespace PayeTonEnchère.models
         public double Finalprice { get => _finalprice; set => _finalprice = value; } // accesseur/mutateur de la variable _finalprice
         
         public Produit leProduit { get=> _leProduit; set => _leProduit = value; } 
-        public Enchere leTypeEnchere { get=> _leTypeEnchere; set => _leTypeEnchere = value; }
+        public TypeEnchere leTypeEnchere { get=> _leTypeEnchere; set => _leTypeEnchere = value; }
     }
 
          #endregion

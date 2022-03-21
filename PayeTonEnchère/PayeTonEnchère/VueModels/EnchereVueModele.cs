@@ -10,7 +10,7 @@ namespace PayeTonEnchère.VueModels
     internal class EnchereVueModele
     {
         #region Attributs
-        private readonly api _apiServices = new api();
+        private readonly Api _apiServices = new Api();
         private ObservableCollection<Enchere> _maListeEnchere;
 
         #endregion

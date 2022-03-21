@@ -15,7 +15,7 @@ namespace PayeTonEnchère.VueModels
     public class ListeProduitVueModele
     {
         #region Attributs
-        private readonly api _apiServices = new api();
+        private readonly Api _apiServices = new Api();
         private bool _resultat;
         private ObservableCollection<Produit> maListeProduits;
         #endregion
@@ -67,6 +67,8 @@ namespace PayeTonEnchère.VueModels
             }
             catch (Exception ex)
             {
+                var error = string.Format("Time: {0}\r\nError: Unhandled Exception\r\n{1}\n\n", DateTime.Now, ex);
+                Console.WriteLine(error);
                 return false;
             }
         }

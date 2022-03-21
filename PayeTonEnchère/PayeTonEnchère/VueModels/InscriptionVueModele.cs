@@ -14,7 +14,7 @@ namespace PayeTonEnchère.VueModels
     {
         #region Attributs
 
-        private readonly api _apiServices = new api();
+        private readonly Api _apiServices = new Api();
 
         #endregion
 
@@ -31,7 +31,18 @@ namespace PayeTonEnchère.VueModels
         #region Getters/Setters
         public ICommand CommandBoutonRetour { get; }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        event PropertyChangedEventHandler INotifyPropertyChanged.PropertyChanged
+        {
+            add
+            {
+                throw new NotImplementedException();
+            }
+
+            remove
+            {
+                throw new NotImplementedException();
+            }
+        }
 
         #endregion
 

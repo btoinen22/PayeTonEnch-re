@@ -14,6 +14,10 @@ namespace PayeTonEnchère.services
             ErrorDescriptionConnexion = "Email ou mot de passe Incorrect",
             ErrorDescriptionInscription = "un des champs entrées est incorrect ou vide",
             ErrorOk = "Ok",
-            ErrorCancel = "Retour";
+            ErrorCancel = "Retour",
+            ApiPostUser = "PostUser",
+            ApigetGagnant = "getGagnant",
+            ApiGetUserByMailAndPass = "GetUserByMailAndPass";
+
     }
 }

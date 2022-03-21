@@ -11,6 +11,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Vues\AuthentificationPage.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Vues\AuthentificationPage.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.Core" Version="1.22.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RockLib.HealthChecks.AspNetCore.ResponseWriter" Version="1.1.2" />
@@ -31,25 +39,28 @@
     <Compile Update="OLDMainPage.xaml.cs">
       <DependentUpon>OLDMainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Vues\AccueilNonCo.xaml.cs">
-      <DependentUpon>AccueilNonCo.xaml</DependentUpon>
+    <Compile Update="Vues\AccueilNonCo1.xaml.cs">
+      <DependentUpon>AccueilNonCo1.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Vues\AuthentificationPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Vues\EnchereVue.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Vues\ListeProduitVue.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Vues\MaConnexionPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Vues\MonInscriptionPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vues\AccueilNonCo.xaml">
+    <EmbeddedResource Update="Vues\AccueilNonCo1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Vues\Page1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

@@ -5,5 +5,3 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Style", "IDE0075:Simplifier l’expression conditionnelle", Justification = "<En attente>", Scope = "member", Target = "~M:PayeTonEnchère.services.Api.GetAuthAsync``1(``0)~System.Threading.Tasks.Task{System.Boolean}")]
-[assembly: SuppressMessage("Style", "IDE0075:Simplifier l’expression conditionnelle", Justification = "<En attente>", Scope = "member", Target = "~M:PayeTonEnchère.services.Api.PostUser``1(``0)~System.Threading.Tasks.Task{System.Boolean}")]

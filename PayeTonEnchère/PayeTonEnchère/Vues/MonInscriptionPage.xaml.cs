@@ -16,6 +16,10 @@ namespace PayeTonEnchère.Vues
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MonInscriptionPage : ContentPage
     {
+        public string Photo64
+        {
+            get; set;
+        }
         //Création d'une instance d'api pour accéder au méthode de l'API symfony
         readonly Api inscriptionapi = new Api();
 
@@ -83,16 +87,16 @@ namespace PayeTonEnchère.Vues
                 {
                     // ajout d'un user dans la base de donnée
                     // a partir des entry
-                    await inscriptionapi.PostUser(new User(
+                    await inscriptionapi.PostAsync(new User(
                         EmailEntry.Text,
                         PasswordEntry.Text,
                         Photo64,
                         PseudoEntry.Text
-                        )) ;
+                        ),ServiceApi.ApiPostUser) ;
                     // affiche un message disant que l'inscription à été faites
                     await DisplayAlert("Bravo", "enregistrement réussi", "ok", "cancel");
                     // redirection vers la page X
-                    Application.Current.MainPage = new AuthentificationPage();
+                    Application.Current.MainPage = new MaConnexionPage();
                 }
                 else // si les mdp sont différents affiche un message d'erreur
                 {
@@ -123,10 +127,6 @@ namespace PayeTonEnchère.Vues
                 (sender as Button).IsEnabled = true;
         }
 
-        public string Photo64
-        {
-            get;set;
-        }
         public static byte[] ImageToByteArray(System.Drawing.Image x)
         {
             ImageConverter _imageConverter = new ImageConverter();

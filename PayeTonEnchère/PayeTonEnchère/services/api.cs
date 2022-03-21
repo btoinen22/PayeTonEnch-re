@@ -64,7 +64,7 @@ namespace PayeTonEnchère.services
         }
 
         /// <summary>
-        /// ajout de tout les objets créer dans la base de donnée
+        /// Ajout d'un objet à la base de donnée
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="param"></param>
@@ -73,52 +73,24 @@ namespace PayeTonEnchère.services
         public async Task<bool> PostAsync<T>(T param, string paramUrl)
         {
 
-            var jsonstring = JsonConvert.SerializeObject(param);
+            var jsonstring = JsonConvert.SerializeObject(param); // sérialize l'objet ( convertion en json )
 
             try
             {
-                var client = new HttpClient();
-                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Constantes.APIenchere +paramUrl, jsonContent);
-                var content = await response.Content.ReadAsStringAsync();
-                var result = content == "OK" ? true : false;
-                return result;
+                var client = new HttpClient(); // création d'une instance httpClient
+                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json"); // création d'une instance stringContent
+                var response = await client.PostAsync(Constantes.APIenchere +paramUrl, jsonContent);// Envoi de l'objet dans l'API
+                var content = await response.Content.ReadAsStringAsync(); // ??
+                var result = content == "OK" ? true : false; // valeur de vérification
+                return result; // retourne la valeur de result
             }
             catch (Exception ex)
             {
-                var error = string.Format("Time: {0}\r\nError: Unhandled Exception\r\n{1}\n\n", DateTime.Now, ex);
-                Console.WriteLine(error);
-                return false;
+                var error = string.Format("Time: {0}\r\nError: Unhandled Exception\r\n{1}\n\n", DateTime.Now, ex); // formatage de l'erreur
+                Console.WriteLine(error); // affichage de l'erreur
+                return false; // retourne false
             }
         }
-
-        /// <summary>
-        /// Permet la création d'un user 
-        /// a partir de l'API
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="param"></param>
-        /// <param name="paramUrl"></param>
-        /// <returns></returns>
-        public async Task<bool> PostUser<T>(T param)
-        {
-            var jsonstring = JsonConvert.SerializeObject(param);
-            try
-            {
-                var client = new HttpClient();
-                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Constantes.APIenchere + "postUser", jsonContent);
-                var content = await response.Content.ReadAsStringAsync();
-                var result = content == "OK" ? true : false;
-                return result;
-            }
-            catch (Exception ex)
-            {
-                Console.Write(ex.ToString());
-                return false;
-            }
-        }
-
         public async Task<bool> GetAuthAsync<T>(T param)
         {
             var jsonstring = JsonConvert.SerializeObject(param);
