@@ -12,7 +12,7 @@ namespace PayeTonEnchère.Vues
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Page1 : Shell
     {
-        public Page1()
+        public AcceuilPage()
         {
             InitializeComponent();
         }
