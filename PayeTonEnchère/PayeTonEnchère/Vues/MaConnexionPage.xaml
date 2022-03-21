@@ -8,6 +8,13 @@
         
         <StackLayout>
 
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" Margin="0,150,0,0" >
+                <Label Text="Se connecter"
+                           TextColor="CadetBlue"
+                           FontSize="Title"
+                           />
+            </StackLayout>
+
             <Grid VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand">
 
