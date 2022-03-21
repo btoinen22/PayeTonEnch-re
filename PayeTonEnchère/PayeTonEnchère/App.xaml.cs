@@ -13,6 +13,8 @@ namespace PayeTonEnchère
             InitializeComponent();
 
             MainPage = new Page1();
+            Routing.RegisterRoute(nameof(MaConnexionPage), typeof(MaConnexionPage));
+            Routing.RegisterRoute(nameof(MonInscriptionPage), typeof(MonInscriptionPage));
         }
 
         protected override void OnStart()
