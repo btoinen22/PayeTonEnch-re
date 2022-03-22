@@ -4,7 +4,7 @@
              x:Class="PayeTonEnchère.Vues.AcceuilPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="T'es connecté mon reuf ! bien joué !"
+            <Label Text="Welcome to Xamarin.Forms!"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
         </StackLayout>
