@@ -5,8 +5,8 @@
     <Application.Resources>
         <ResourceDictionary>
             <!--<Color x:Key="Primary">#2196F3</Color>-->
-            <Color x:Key="Primary">#FF8B0000</Color>
-            <Color x:Key="WhiteTxt">#FFFF</Color>
+            <Color x:Key="Primary">cadetblue</Color>
+            <Color x:Key="WhiteTxt">whitesmoke</Color>
             <Color x:Key="InactiveElement"></Color>
             <Style TargetType="Button">
                 <Setter Property="TextColor" Value="White"></Setter>
@@ -21,7 +21,7 @@
                             <VisualState x:Name="Disabled">
                                 <VisualState.Setters>
                                     <!--<Setter Property="BackgroundColor" Value="#332196F3" />-->
-                                    <Setter Property="BackgroundColor" Value="#FF8B0000" />
+                                    <Setter Property="BackgroundColor" Value="CadetBlue" />
                                 </VisualState.Setters>
                             </VisualState>
                         </VisualStateGroup>

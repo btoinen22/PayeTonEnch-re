@@ -4,8 +4,12 @@ using System.Text;
 
 namespace PayeTonEnchère.VueModels
 {
-    internal class AccueilNonCoVueModels
+    public class AccueilNonVueModels
     {
+        #region attributs
 
+        public bool IsVisible { get; }
+
+        #endregion
     }
 }

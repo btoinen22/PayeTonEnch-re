@@ -8,9 +8,17 @@
         
         <StackLayout>
 
+                <BoxView WidthRequest="1" BackgroundColor="AntiqueWhite" HeightRequest="5" Margin="0,0,0,15" />
+            <StackLayout VerticalOptions="StartAndExpand" HorizontalOptions="Center" Margin="0,150,0,0" >
+                <Label Text="Se connecter"
+                           TextColor="CadetBlue"
+                           FontSize="Title"
+                           />
+            </StackLayout>
+
             <Grid VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand">
-
+                 Text="{Binding Identifiant}" Margin="25,0,25,25"/>
                 <StackLayout >
 
                     <Entry x:Name="MailUtilisateur"
@@ -24,6 +32,7 @@
                         Text="{Binding Pass}"
                         Margin="25,0"
                     />
+             Text="{Binding MotDePasse}" Margin="25,0"/>
 
                 </StackLayout>
 
