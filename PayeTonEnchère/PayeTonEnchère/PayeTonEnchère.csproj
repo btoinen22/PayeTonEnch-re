@@ -51,10 +51,10 @@
     <EmbeddedResource Update="Vues\AcceuilVisiteurPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vues\EnchereVue.xaml">
+    <EmbeddedResource Update="Vues\DetailClassiquePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Vues\ListeProduitVue.xaml">
+    <EmbeddedResource Update="Vues\EnchereVue.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Vues\MaConnexionPage.xaml">

@@ -10,7 +10,7 @@
                 <BoxView>
                     <BoxView.Background>
                         <LinearGradientBrush>
-                            <GradientStop Color="AntiqueWhite" Offset="2"/>
+                            <GradientStop Color="WhiteSmoke" Offset="2"/>
                             <GradientStop Color="WhiteSmoke" Offset="3"/>
                         </LinearGradientBrush>
                     </BoxView.Background>
