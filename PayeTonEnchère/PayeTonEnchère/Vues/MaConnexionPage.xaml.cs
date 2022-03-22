@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PayeTonEnchère.VueModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace PayeTonEnchère.Vues
         public MaConnexionPage()
         {
             InitializeComponent();
+            BindingContext = new AuthentificationVueModele(this);
         }
     }
 }
