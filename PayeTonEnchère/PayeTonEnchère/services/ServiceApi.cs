@@ -18,6 +18,7 @@ namespace PayeTonEnchère.services
             ApiPostUser = "PostUser",
             ApigetGagnant = "getGagnant",
             ApiGetUserByMailAndPass = "GetUserByMailAndPass";
+            
 
     }
 }
