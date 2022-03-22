@@ -17,7 +17,7 @@ namespace PayeTonEnchère
             InitializeComponent();
             Routing.RegisterRoute(nameof(MaConnexionPage), typeof(MaConnexionPage));
             Routing.RegisterRoute(nameof(MonInscriptionPage), typeof(MonInscriptionPage));
-            Routing.RegisterRoute(nameof(AcceuilPage), typeof(AcceuilPage));
+            //Routing.RegisterRoute(nameof(AcceuilPage), typeof(AcceuilPage));
             Routing.RegisterRoute(nameof(AcceuilVisiteurPage), typeof(AcceuilVisiteurPage));
         }
 

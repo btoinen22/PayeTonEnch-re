@@ -159,5 +159,10 @@ namespace PayeTonEnchère.services
             jsonString += @"}";
             return jsonString;
         }
+
+        internal void GetAllAsync(Enchere enchere)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

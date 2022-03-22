@@ -4,9 +4,24 @@
              x:Class="PayeTonEnchère.Vues.AcceuilVisiteurPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="Paye Ton Enchère" TextColor="CadetBlue" FontSize="Title"/>
+
+            <CollectionView ItemsSource="{Binding GetListeEncheresEnCour}" SelectionChanged="CollectionView_SelectionChanged"  SelectionMode="Multiple" BackgroundColor="White">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Padding="10" Margin="10">
+                            
+                            <Label Text="Enchères types Classiques" Margin="20" FontSize="20" HorizontalTextAlignment="Center" TextColor="black" />
+                            <Image Source="{Binding LeProduit.Photo}" Aspect="Fill" Grid.RowSpan="2" HeightRequest="100" Grid.Column="0"/>
+                            <Label Text="{Binding LeProduit.Nom}" Grid.Row="1" Grid.Column="1" TextColor="Black" />
+                            <BoxView Grid.Row="2" HorizontalOptions="FillAndExpand" Grid.ColumnSpan="3"
+                                         VerticalOptions="Center" HeightRequest="3" BackgroundColor="DarkGray" />
+
+                        </Grid>
+                    </DataTemplate>
+                    </CollectionView.ItemTemplate>
+            </CollectionView>
+        
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

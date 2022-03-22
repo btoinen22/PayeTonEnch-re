@@ -80,7 +80,7 @@ namespace PayeTonEnchère.VueModels
                     ServiceApi.ErrorCancel);
             else // sinon renvoi vers la page d'acceuil en tant qu'utilisateur connecté
             {
-                Application.Current.MainPage = new AcceuilPage();
+               Application.Current.MainPage = new AcceuilVisiteurPage();
             }
         }
 

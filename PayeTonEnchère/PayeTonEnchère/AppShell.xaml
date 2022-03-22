@@ -85,9 +85,9 @@
     <FlyoutItem Title="Connexion">
         <ShellContent Route="MaConnexionPage" ContentTemplate="{DataTemplate local:MaConnexionPage}" />
     </FlyoutItem>
-    <FlyoutItem Title="Acceuil enchèreur">
+    <!--<FlyoutItem Title="Acceuil enchèreur">
         <ShellContent Route="MaConnexionPage" ContentTemplate="{DataTemplate local:AcceuilPage}" />
-    </FlyoutItem>
+    </FlyoutItem>-->
     <FlyoutItem Title="Acceuil Visiteur">
         <ShellContent Route="MaConnexionPage" ContentTemplate="{DataTemplate local:AcceuilVisiteurPage}" />
     </FlyoutItem>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PayeTonEnchère.models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,12 @@ namespace PayeTonEnchère.Vues
         public AcceuilVisiteurPage()
         {
             InitializeComponent();
+        }
+
+        private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var current = (Enchere)e.CurrentSelection.FirstOrDefault();
+            Navigation.PushAsync(new DetailClassiquePage(current));
         }
     }
 }

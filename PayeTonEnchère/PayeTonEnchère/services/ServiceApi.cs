@@ -17,7 +17,8 @@ namespace PayeTonEnchère.services
             ErrorCancel = "Retour",
             ApiPostUser = "PostUser",
             ApigetGagnant = "getGagnant",
-            ApiGetUserByMailAndPass = "GetUserByMailAndPass";
+            ApiGetUserByMailAndPass = "GetUserByMailAndPass",
+            ApiEncheresEnCours = "GetEncheresEnCours";
 
     }
 }

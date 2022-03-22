@@ -1,9 +1,11 @@
-﻿using PayeTonEnchère.models;
+﻿
+using PayeTonEnchère.models;
 using PayeTonEnchère.services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace PayeTonEnchère.VueModels
 {
@@ -16,27 +18,48 @@ namespace PayeTonEnchère.VueModels
         #endregion
 
         #region Constructeurs
-
         public EnchereVueModele()
         {
-            this.GetOneEnchere(new Enchere(DateTime.Now, DateTime.Now, 0, 0, new Produit("nom","photo",0),new TypeEnchere("nom")));
+            GetListeEncheresEnCour();
+
         }
+
 
 
         #endregion
 
         #region Getters/Setters
-        public ObservableCollection<Enchere> MaListeEnchere { get => _maListeEnchere; set => _maListeEnchere = value; }
+
+
+        public ObservableCollection<Enchere> MaListeEnchere
+        {
+            get
+            {
+                return _maListeEnchere;
+            }
+
+            set
+            {
+                _maListeEnchere = value;
+            }
+        }
 
         #endregion
 
         #region Methodes
-        public async void GetOneEnchere(Enchere uneEnchere)
+
+        /// Affichage de la liste des enchére en cours
+        /// <returns>récupère les données des enchere en cours  à partir de la méthode d'API GetAllAsync</returns>
+        
+        public async void GetListeEncheresEnCour()
         {
+            MaListeEnchere = await _apiServices.GetAllAsync<Enchere>
+                (ServiceApi.ApiEncheresEnCours, Enchere._collClass);
             Enchere._collClass.Clear();
-            /*MaListeEnchere = await _apiServices.GetOneAsync<Enchere>
-                   ("api/getEnchere", Enchere._collClass, uneEnchere);*/
         }
+
+
         #endregion
     }
 }
+
