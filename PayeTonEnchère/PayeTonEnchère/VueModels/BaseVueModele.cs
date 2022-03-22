@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 
 namespace PayeTonEnchère.VueModels
 {
-    internal class BaseVueModele
+    public class BaseVueModele
     {
         //public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 

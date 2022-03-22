@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using PayeTonEnchère.models;
 using System;
 using System.Collections.Generic;
@@ -43,23 +44,29 @@ namespace PayeTonEnchère.services
 
         }
 
-        public async Task<ObservableCollection<T>> GetOneAsync<T>(string paramUrl, List<T> param, T param2)
+        /// <summary>
+        /// Get One Item whith a list of parameters in the request
+        /// This method is generic and work with values that have toString() method
+        /// </summary>
+        /// <param name="paramUrl"></param>
+        /// <param name="parameters">Dictionnary with Key = param name  and Value = param value</param>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public async Task<T> GetOneAsync<T>(string paramUrl, Dictionary<string, object> parameters)
         {
             try
             {
-                var jsonstring = JsonConvert.SerializeObject(param2);
+                JObject getResult = JObject.Parse(GetJsonString(parameters));
+                var jsonContent = new StringContent(getResult.ToString(), Encoding.UTF8, "application/json");
                 var clientHttp = new HttpClient();
-                var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-
                 var response = await clientHttp.PostAsync(Constantes.APIenchere + paramUrl, jsonContent);
                 var json = await response.Content.ReadAsStringAsync();
-                JsonConvert.DeserializeObject<List<T>>(json);
-                return GestionCollection.GetListes<T>(param);
+                T res = JsonConvert.DeserializeObject<T>(json);
+                return res;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.Write(ex.ToString());
-                return null;
+                return default;
             }
         }
 
@@ -131,6 +138,26 @@ namespace PayeTonEnchère.services
                 Console.Write(ex.ToString());
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Get a Jsonstring for all the parameters with their name and value
+        /// </summary>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
+        public static string GetJsonString(Dictionary<string, object> parameters)
+        {
+            string jsonString = @"{";
+            int i = 0;
+            foreach (KeyValuePair<string, object> parameter in parameters)
+            {
+                i++;
+                jsonString += @"'" + parameter.Key + "':'" + parameter.Value + "'";
+                if (i != parameters.Count)
+                    jsonString += @",";
+            }
+            jsonString += @"}";
+            return jsonString;
         }
     }
 }
