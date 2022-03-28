@@ -40,7 +40,7 @@ namespace PayeTonEnchère.VueModels
 
             set
             {
-                _maListeEnchere = value;
+               SetProperty(ref _maListeEnchere = value);
             }
         }
 

@@ -17,7 +17,6 @@
 
             <Grid VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand">
-                
                 <StackLayout >
 
                     <Entry x:Name="MailUtilisateur"
