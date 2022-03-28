@@ -15,19 +15,19 @@
                            />
             </StackLayout>
 
-            <Grid VerticalOptions="CenterAndExpand" 
+            <StackLayout VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand">
                 <StackLayout >
 
                     <Entry x:Name="MailUtilisateur"
                             Placeholder="Email" 
-                            Text="{Binding Mail}"
+                            Text="{Binding EmailEntry}"
                            Margin="25,0"
                     />
 
                     <Entry x:Name="txtMotDePasse"
                         Placeholder="Password"
-                        Text="{Binding Pass}"
+                        Text="{Binding PasswordEntry}"
                         Margin="25,0"
                     />
 
@@ -51,7 +51,7 @@
 
                 </Grid>
 
-            </Grid>
+            </StackLayout>
 
         </StackLayout>
         

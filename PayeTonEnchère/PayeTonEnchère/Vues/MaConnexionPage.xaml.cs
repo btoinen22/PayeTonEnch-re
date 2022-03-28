@@ -16,7 +16,7 @@ namespace PayeTonEnchère.Vues
         public MaConnexionPage()
         {
             InitializeComponent();
-            BindingContext = new AuthentificationVueModele(this);
+            BindingContext = new AuthentificationVueModele();
         }
     }
 }

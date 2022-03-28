@@ -23,9 +23,8 @@ namespace PayeTonEnchère.VueModels
         #endregion
 
         #region Constructeurs
-        public AuthentificationVueModele(Page page)
+        public AuthentificationVueModele()
         {
-            this.page = page;
             CommandBoutonConnexion = new Command(OnSubmit);
             CommandBoutonInscription = new Command(Inscription);
         }
