@@ -7,19 +7,26 @@ using System.Text;
 
 namespace PayeTonEnchère.VueModels
 {
-    public class AccueilVueModele
+    public class AccueilVueModele : BaseVueModele
     {
         #region Attributs
 
         private readonly Api _apiServices = new Api();
         private ObservableCollection<Enchere> _maListeEnchere;
+        private ObservableCollection<Enchere> _maListeEnchereEnCours;
+
+        public ObservableCollection<Enchere> MaListeEnchereEnCours
+        {
+            get { return _maListeEnchereEnCours; }
+            set { SetProperty(ref _maListeEnchereEnCours, value); }
+        }
 
         #endregion
         #region Constructeurs
 
         public AccueilVueModele()
         {
-            _apiServices.GetAllAsync(new Enchere(DateTime.Now, DateTime.Now, 0, 0, new Produit("nom", "photo", 0), new TypeEnchere("nom")));
+            GetEnchereEnCours();
         }
 
 
@@ -31,11 +38,13 @@ namespace PayeTonEnchère.VueModels
         #endregion
 
         #region Methodes
-        public async void GetAllAsync(Enchere uneEnchere)
+
+        public async void GetEnchereEnCours()
         {
-            Enchere._collClass.Clear();
-            /*MaListeEnchere = await _apiServices.GetOneAsync<Enchere>
-                   ("api/getEnchere", Enchere._collClass, uneEnchere);*/
+            MaListeEnchereEnCours = await _apiServices.GetAllAsync<Enchere>
+                    ("getEncheresEnCours", Enchere.CollClass);
+            
+            Enchere.CollClass.Clear();
         }
         #endregion
     }

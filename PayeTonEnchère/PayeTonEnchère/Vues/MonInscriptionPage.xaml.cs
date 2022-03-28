@@ -2,12 +2,8 @@
 using PayeTonEnchère.services;
 using PayeTonEnchère.VueModels;
 using System;
-using System.Collections.ObjectModel;
-using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -127,16 +123,5 @@ namespace PayeTonEnchère.Vues
                 (sender as Button).IsEnabled = true;
         }
 
-        public static byte[] ImageToByteArray(System.Drawing.Image x)
-        {
-            ImageConverter _imageConverter = new ImageConverter();
-            byte[] xByte = (byte[])_imageConverter.ConvertTo(x, typeof(byte[]));
-            return xByte;
-        }
-
-        /*private async void DejaInscrit_clicked(object sender, EventArgs e)
-        {
-            //await Shell.Current.GoToAsync();
-        }*/
     } 
 }

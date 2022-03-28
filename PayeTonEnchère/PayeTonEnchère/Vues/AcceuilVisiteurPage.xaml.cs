@@ -18,10 +18,8 @@ namespace PayeTonEnchère.Vues
         {
 
             InitializeComponent();
-            BindingContext = new EnchereVueModele();
+            BindingContext = new AccueilVueModele();
         }
-       
-
 
     }
 }

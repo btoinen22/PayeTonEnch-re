@@ -37,11 +37,7 @@ namespace PayeTonEnchère.VueModels
             {
                 return _maListeEnchere;
             }
-
-            set
-            {
-               SetProperty(ref _maListeEnchere = value);
-            }
+            set { _maListeEnchere = value; }
         }
 
         #endregion
@@ -54,8 +50,8 @@ namespace PayeTonEnchère.VueModels
         public async void GetListeEncheresEnCour()
         {
             MaListeEnchere = await _apiServices.GetAllAsync<Enchere>
-                (ServiceApi.ApiEncheresEnCours, Enchere._collClass);
-            Enchere._collClass.Clear();
+                (ServiceApi.ApiEncheresEnCours, Enchere.CollClass);
+            Enchere.CollClass.Clear();
         }
 
 
