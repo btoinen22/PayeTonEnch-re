@@ -134,9 +134,9 @@ namespace PayeTonEnchère.Vues
             return xByte;
         }
 
-        private async void DejaInscrit_clicked(object sender, EventArgs e)
+        /*private async void DejaInscrit_clicked(object sender, EventArgs e)
         {
             //await Shell.Current.GoToAsync();
-        }
+        }*/
     } 
 }
