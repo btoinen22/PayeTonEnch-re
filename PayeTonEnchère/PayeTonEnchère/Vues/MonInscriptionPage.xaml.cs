@@ -1,4 +1,4 @@
-﻿using PayeTonEnchère.models;
+﻿using PayeTonEnchère.Models;
 using PayeTonEnchère.services;
 using PayeTonEnchère.VueModels;
 using System;
@@ -17,7 +17,7 @@ namespace PayeTonEnchère.Vues
             get; set;
         }
         //Création d'une instance d'api pour accéder au méthode de l'API symfony
-        readonly Api inscriptionapi = new Api();
+        readonly Api _inscriptionapi = new Api();
 
         /// <summary>
         /// Initialisation d'une nouvelle instance de l'InsciptionVueModele
@@ -30,7 +30,7 @@ namespace PayeTonEnchère.Vues
 
         // instance de la classe regex qui permet de vérifier la validité de caractère 
         // ici d'une adresse Email
-        readonly Regex EmailValidate = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        readonly Regex _emailValidate = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
 
         /// <summary>
         /// Enregistre la valeur de l'Email présent dans l'entry
@@ -40,7 +40,7 @@ namespace PayeTonEnchère.Vues
         public bool ValidateEmail()
         {
             string mail = EmailEntry.Text; // associe une variable à la valeur du EmailEntry
-            Match match = EmailValidate.Match(mail); // verifie si l'Email correspond au exigence de validité du regex
+            Match match = _emailValidate.Match(mail); // verifie si l'Email correspond au exigence de validité du regex
             if (match.Success) // si c'est valide retourn true
                 return true;
             else // sinon retourne False
@@ -83,7 +83,7 @@ namespace PayeTonEnchère.Vues
                 {
                     // ajout d'un user dans la base de donnée
                     // a partir des entry
-                    await inscriptionapi.PostAsync(new User(
+                    await _inscriptionapi.PostAsync(new User(
                         EmailEntry.Text,
                         PasswordEntry.Text,
                         Photo64,

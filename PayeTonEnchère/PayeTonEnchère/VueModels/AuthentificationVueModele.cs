@@ -1,4 +1,4 @@
-﻿using PayeTonEnchère.models;
+﻿using PayeTonEnchère.Models;
 using PayeTonEnchère.services;
 using PayeTonEnchère.Vues;
 using System.Collections.Generic;
@@ -16,7 +16,7 @@ namespace PayeTonEnchère.VueModels
 
         Api _apiService = new Api();
 
-        protected Page page;
+        protected Page Page;
         private string _emailEntry,
             _passwordEntry;
 
@@ -86,7 +86,7 @@ namespace PayeTonEnchère.VueModels
 
         /// <param name="param"></param> Dictionnaire d'objet initialiser dans le OnSubmit
         /// <returns>récupère les données d'un user à partir de la méthode d'API GetOneAsync</returns>
-        public async Task<User> GetUserByMdpAndMail(Dictionary<string, object> param)
+        async Task<User> GetUserByMdpAndMail(Dictionary<string, object> param)
         {
             return await _apiService.GetOneAsync<User>(ServiceApi.ApiGetUserByMailAndPass, param);
         }

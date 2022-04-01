@@ -2,55 +2,47 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PayeTonEnchère.models
+namespace PayeTonEnchère.Models
 {
-    public class Encherir
+    class Encherir
     {
-	
-		#region Attribut
+        #region Attributs
+        private int _id;
 
-		private int _id;
-		private double _prixenchere;
-		private DateTime _dateenchere;
-
-        private static List<Encherir> collClass = new List<Encherir>(); // liste de tout les encherissemnt 
-
-
-        // Relation 
-
-        // encherir les encheres
-        private Enchere _lEnchere;
-
-		//un utilisateur enrechit
-		private User _leUser;
+        private int _idUser;
+        private int _idEnchere;
+        private float _prixEnchere;
+        private string _pseudo;
+        public static List<Encherir> CollClasse = new List<Encherir>();
 
 
         #endregion
 
-        #region Constructeur
-        public Encherir(double prixenchere, DateTime dateenchere, Enchere lEnchere, User leUser)
+        #region Constructeurs
+
+        public Encherir(float prixenchere, int idUser, int idEnchere, int id, string pseudo)
         {
-            _prixenchere = prixenchere;
-            _dateenchere = dateenchere;
-            CollClass.Add(this);
-            _lEnchere = lEnchere;
-            _leUser = leUser;
+            Encherir.CollClasse.Add(this);
+            PrixEnchere = prixenchere;
+            IdUser = idUser;
+            IdEnchere = idEnchere;
+            Id = id;
+            Pseudo = pseudo;
         }
+
         #endregion
 
         #region Getters/Setters
+        public float PrixEnchere { get => _prixEnchere; set => _prixEnchere = value; }
+        public int IdUser { get => _idUser; set => _idUser = value; }
+        public int IdEnchere { get => _idEnchere; set => _idEnchere = value; }
         public int Id { get => _id; set => _id = value; }
-		public double Prixenchere { get => _prixenchere; set => _prixenchere = value; }
-		public DateTime Dateenchere { get => _dateenchere; set => _dateenchere = value; }
-		public static List<Encherir> CollClass { get => collClass; set => collClass = value; }
-		internal Enchere LEnchere { get => _lEnchere; set => _lEnchere = value; }
-		internal User LeUser { get => _leUser; set => _leUser = value; }
+        public string Pseudo { get => _pseudo; set => _pseudo = value; }
 
+        #endregion
 
-		#endregion
+        #region Methodes
 
-		#region Methodes
-		#endregion
-
-	}
+        #endregion
+    }
 }
