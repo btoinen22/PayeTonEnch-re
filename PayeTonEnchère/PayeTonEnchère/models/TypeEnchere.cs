@@ -2,46 +2,39 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PayeTonEnchère.models
+namespace PayeTonEnchère.Models
 {
     public class TypeEnchere
     {
-        #region Attribut 
-        private int _id; // ne contiendras un maximum de 3 ID pour les différent types d'enchères existantes
-        private string _name; // enchère classique / enchère renversée / enchère flash
+        #region Attributs
 
-        //Relation 
+        public static List<TypeEnchere> CollClasse = new List<TypeEnchere>();
 
-        //Les encheres pour un type encheres
-        private List<Enchere> _lesEncheres;
+        private int _id;
+        private string _nom;
+
         #endregion
 
-        #region Constructeur
-        /// <summary>
-        /// Constructeur de la classe TypeEnchere
-        /// </summary>
-        /// <param name="name"></param>
-        /// 
+        #region Constructeurs
 
-        public TypeEnchere(string name)
+        public TypeEnchere(int id, string nom)
         {
-            _name = name; // associe le paramètre à la variable associé dans la base
-
-            _lesEncheres = new List<Enchere>();
+            TypeEnchere.CollClasse.Add(this);
+            _id = id;
+            _nom = nom;
         }
+
 
         #endregion
 
         #region Getters/Setters
-
-        public int Id { get => _id; set => _id = value; } // accesseur/mutateur de la variable _id
-        public string Name { get => _name; set => _name = value; } // accesseur/mutateur de la variable _name
+        public int Id { get => _id; set => _id = value; }
+        public string Nom { get => _nom; set => _nom = value; }
 
         #endregion
 
         #region Methodes
 
         #endregion
-
     }
 }

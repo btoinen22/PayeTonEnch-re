@@ -90,7 +90,7 @@
     </FlyoutItem>
     <FlyoutItem Title="Acceuil enchèreur">
         <ShellContent Route="MaConnexionPage" ContentTemplate="{DataTemplate local:AcceuilPage}" />
-    </FlyoutItem>-->
+    </FlyoutItem>
 
 
 

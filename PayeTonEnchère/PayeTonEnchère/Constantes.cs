@@ -12,7 +12,7 @@ namespace PayeTonEnchère
             //APIenchere = "http://172.17.0.61:80
             //00/api/",
             //Adresse de l'API en serveur distant
-            APIenchere = "http://80.13.113.244:2081/api/"
+            ApIenchere = "http://80.13.113.244:2081/api/"
             ;
 
     }

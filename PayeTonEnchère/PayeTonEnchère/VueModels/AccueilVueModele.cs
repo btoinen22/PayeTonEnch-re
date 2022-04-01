@@ -1,4 +1,4 @@
-﻿using PayeTonEnchère.models;
+﻿using PayeTonEnchère.Models;
 using PayeTonEnchère.services;
 using System;
 using System.Collections.Generic;
@@ -42,9 +42,13 @@ namespace PayeTonEnchère.VueModels
         public async void GetEnchereEnCours()
         {
             MaListeEnchereEnCours = await _apiServices.GetAllAsync<Enchere>
-                    ("getEncheresEnCours", Enchere.CollClass);
-            
-            Enchere.CollClass.Clear();
+                    ("getEncheresEnCours", Enchere.CollClasse);
+
+            Enchere.CollClasse.Clear();
+
+            new User("dffff@dddd.fr", "oiuytre", "mlkjhgfd", "mlkjhgfd");
+            new User("dffff@kjhgfghj.fr", "oiugfgcfytre", "mlkjhgfd", "mlkjhgfd");
+
         }
         #endregion
     }

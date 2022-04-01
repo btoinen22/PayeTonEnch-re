@@ -1,5 +1,5 @@
 ﻿
-using PayeTonEnchère.models;
+using PayeTonEnchère.Models;
 using PayeTonEnchère.services;
 using System;
 using System.Collections.Generic;
@@ -50,8 +50,8 @@ namespace PayeTonEnchère.VueModels
         public async void GetListeEncheresEnCour()
         {
             MaListeEnchere = await _apiServices.GetAllAsync<Enchere>
-                (ServiceApi.ApiEncheresEnCours, Enchere.CollClass);
-            Enchere.CollClass.Clear();
+                (ServiceApi.ApiEncheresEnCours, Enchere.CollClasse);
+            Enchere.CollClasse.Clear();
         }
 
 

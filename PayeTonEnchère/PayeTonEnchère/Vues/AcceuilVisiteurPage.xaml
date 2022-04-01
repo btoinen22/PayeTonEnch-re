@@ -11,7 +11,7 @@
                     <DataTemplate>
          
                             <Label 
-                           Text="{Binding leProduit.Name}"
+                           Text="{Binding Datedebut}"
                            FontAttributes="Bold"
                            LineBreakMode="TailTruncation" />
                            

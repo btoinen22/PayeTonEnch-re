@@ -1,6 +1,5 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using PayeTonEnchère.models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -32,7 +31,7 @@ namespace PayeTonEnchère.services
             try
             {
                 var clientHttp = new HttpClient();
-                var json = await clientHttp.GetStringAsync(Constantes.APIenchere + paramUrl);
+                var json = await clientHttp.GetStringAsync(Constantes.ApIenchere + paramUrl);
                 JsonConvert.DeserializeObject<List<T>>(json);
                 return GestionCollection.GetListes<T>(param);
             }
@@ -59,7 +58,7 @@ namespace PayeTonEnchère.services
                 JObject getResult = JObject.Parse(GetJsonString(parameters));
                 var jsonContent = new StringContent(getResult.ToString(), Encoding.UTF8, "application/json");
                 var clientHttp = new HttpClient();
-                var response = await clientHttp.PostAsync(Constantes.APIenchere + paramUrl, jsonContent);
+                var response = await clientHttp.PostAsync(Constantes.ApIenchere + paramUrl, jsonContent);
                 var json = await response.Content.ReadAsStringAsync();
                 T res = JsonConvert.DeserializeObject<T>(json);
                 return res;
@@ -86,7 +85,7 @@ namespace PayeTonEnchère.services
             {
                 var client = new HttpClient(); // création d'une instance httpClient
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json"); // création d'une instance stringContent
-                var response = await client.PostAsync(Constantes.APIenchere +paramUrl, jsonContent);// Envoi de l'objet dans l'API
+                var response = await client.PostAsync(Constantes.ApIenchere +paramUrl, jsonContent);// Envoi de l'objet dans l'API
                 var content = await response.Content.ReadAsStringAsync(); // ??
                 var result = content == "OK" ? true : false; // valeur de vérification
                 return result; // retourne la valeur de result
@@ -105,7 +104,7 @@ namespace PayeTonEnchère.services
             {
                 var client = new HttpClient();
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Constantes.APIenchere + "Get", jsonContent);
+                var response = await client.PostAsync(Constantes.ApIenchere + "Get", jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
                 var result = content == "OK" ? true : false;
                 return result;
@@ -126,7 +125,7 @@ namespace PayeTonEnchère.services
             {
                 var client = new HttpClient();
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Constantes.APIenchere + "GetUserByMailAndPass", jsonContent);
+                var response = await client.PostAsync(Constantes.ApIenchere + "GetUserByMailAndPass", jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
 #pragma warning disable IDE0075 // Simplifier l’expression conditionnelle
                 var result = content == "OK" ? true : false;
@@ -158,11 +157,6 @@ namespace PayeTonEnchère.services
             }
             jsonString += @"}";
             return jsonString;
-        }
-
-        internal void GetAllAsync(Enchere enchere)
-        {
-            throw new NotImplementedException();
         }
     }
 }

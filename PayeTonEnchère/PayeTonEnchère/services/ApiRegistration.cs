@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using PayeTonEnchère.models;
+using PayeTonEnchère.Models;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -18,7 +18,7 @@ namespace PayeTonEnchère.services
             {
                 var client = new HttpClient();
                 var jsonContent = new StringContent(jsonstring, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(Constantes.APIenchere + "register", jsonContent);
+                var response = await client.PostAsync(Constantes.ApIenchere + "register", jsonContent);
                 var content = await response.Content.ReadAsStringAsync();
                 return true;
             }

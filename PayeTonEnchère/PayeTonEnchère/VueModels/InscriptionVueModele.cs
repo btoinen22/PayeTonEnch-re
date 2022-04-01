@@ -1,12 +1,4 @@
-﻿using Android.Content.Res;
-using PayeTonEnchère.models;
-using PayeTonEnchère.services;
-using PayeTonEnchère.Vues;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-using System.Windows.Input;
+﻿using PayeTonEnchère.Vues;
 using Xamarin.Forms;
 
 namespace PayeTonEnchère.VueModels
@@ -15,15 +7,13 @@ namespace PayeTonEnchère.VueModels
     {
         #region Attributs
 
-        private readonly Api _apiServices = new Api();
-
         #endregion
 
         #region Constructeurs
 
         public InscriptionVueModele()
         {
-            gotoconnexion = new Command(() => gotoco());
+            new Command(() => Gotoco());
         }
 
 
@@ -31,12 +21,10 @@ namespace PayeTonEnchère.VueModels
 
         #region Getters/Setters
 
-        public ICommand gotoconnexion { get; }
-
         #endregion
 
         #region Methodes
-        public async void gotoco()
+        public async void Gotoco()
         {
             var route = $"{nameof(MaConnexionPage)}";
             await Shell.Current.GoToAsync(route);
